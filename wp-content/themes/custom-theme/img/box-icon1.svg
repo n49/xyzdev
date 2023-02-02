@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87.63" height="82" viewBox="0 0 87.63 82">
+  <defs>
+    <rect id="rect-1" width="87.63" height="82" x="0" y="0"/>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="userSpaceOnUse">
+      <rect width="87.63" height="82" x="0" y="0" fill="black"/>
+      <use fill="white" xlink:href="#rect-1"/>
+    </mask>
+  </defs>
+  <g>
+    <use fill="none" xlink:href="#rect-1"/>
+    <g mask="url(#mask-2)">
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M33.9 40.03l-11.27 4.26"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M67.79 44.29l-10.8-4.08"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22.63 51.64v20.74L45.21 81l22.58-8.62V51.64"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22.63 44.29l22.58 8.53 22.58-8.53"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M67.79 44.29l9.73 3.67-22.58 8.53-9.73-3.67"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22.63 44.29l-9.73 3.67 22.58 8.53 9.73-3.67"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22.63 44.29l-9.73-3.68 15.44-5.83"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M67.79 44.29l9.73-3.68L62.4 34.9"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M6.43 13.74C2.96 13.74 1 15.68 1 18.09v.72c0 2.4 1.96 4.35 5.43 4.35"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M26.33 23.16c3.47 0 5.43-1.95 5.43-4.35v-.72c0-2.4-1.96-4.35-5.43-4.35"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M8.9 15.04c4.92-.88 9.96-.88 14.89-.01"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M8.9 17.5c4.93-.34 9.97-.38 14.88-.14"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M8.89 19.97c4.94.21 9.97.12 14.88-.26"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M8.89 22.43c4.94.75 9.98.62 14.88-.38"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M26.33 25.25c-6.54 1.57-13.36 1.57-19.9 0V11.64c1.43-.34 2.87-.61 4.32-.8 1.87-.25 3.75-2.45 5.63-2.45s3.76 2.2 5.63 2.45c1.45.19 2.89.46 4.32.8v13.61h0z"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M40.57 8.31l-.69 12.98c-.09.72.47 1.36 1.2 1.36h8.27c.72 0 1.28-.64 1.2-1.36l-.7-12.98c-.07-.61-.59-1.07-1.2-1.07h-6.89c-.61-.01-1.12.46-1.19 1.07h0z"/>
+      <rect width="4.52" height="2.5" x="43.08" y="4.73" fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" rx="0" ry="0"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M43.08 1h5.39c.99 0 1.79.8 1.79 1.79"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M45.34 4.58V1"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M45.21 52.82V81"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28.1 30.6s10.34 4.1 12.37 15.49"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M62.67 30.54s-10.34 4.1-12.37 15.49"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M45.21 42.65V27.17"/>
+      <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M36.4 60.72c-1.87-.49-2.5 1.01-2.5 1.01s-.63-1.83-2.5-2.31c-1.87-.49-3 1.01-3 2.48 0 4.19 5.51 7.65 5.51 7.65s5.51-.61 5.51-4.8c-.02-1.47-1.15-3.55-3.02-4.03h0z"/>
+      <g>
+        <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M82.63 26.05H67.4c-2.21 0-4-1.79-4-4V13.5c0-2.21 1.79-4 4-4h15.23c2.21 0 4 1.79 4 4v8.54c0 2.22-1.79 4.01-4 4.01h0z"/>
+        <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M65.77 14.64h1.51l.77 1.47 1.53-2.96 1.53 2.96 1.54-2.96 1.53 2.96 1.53-2.96 1.53 2.96 1.54-2.96 1.53 2.96 1.54-2.96.77 1.48 1.51.01"/>
+        <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M67.98 23.09c-.81 0-1.46-.66-1.46-1.46 0-.81.66-1.46 1.46-1.46.81 0 1.46.66 1.46 1.46 0 .8-.66 1.46-1.46 1.46h0z"/>
+        <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M75.18 23.09c-.81 0-1.46-.66-1.46-1.46 0-.81.66-1.46 1.46-1.46.81 0 1.46.66 1.46 1.46 0 .8-.65 1.46-1.46 1.46h0z"/>
+        <path fill="none" stroke="rgb(67,68,72)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" d="M82.38 23.09c-.81 0-1.46-.66-1.46-1.46 0-.81.66-1.46 1.46-1.46.81 0 1.46.66 1.46 1.46 0 .8-.65 1.46-1.46 1.46h0z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+[30-May-2019 15:51:59 CST6CDT] PHP Fatal error:  Uncaught Error: Class 'WP_Query' not found in /home/xyzstora/public_html/wp-content/themes/custom-theme/loop-reviews.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/xyzstora/public_html/wp-content/themes/custom-theme/loop-reviews.php on line 7
+[04-Oct-2021 16:28:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php on line 1
+[25-Nov-2021 04:03:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/archive.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/archive.php on line 1
+[25-Nov-2021 04:03:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[25-Nov-2021 04:03:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php on line 1
+[25-Nov-2021 04:03:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function language_attributes() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/header.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/header.php on line 5
+[28-Nov-2021 04:03:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[28-Nov-2021 04:03:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php on line 1
+[28-Nov-2021 04:03:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function language_attributes() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/header.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/header.php on line 5
+[28-Nov-2021 04:03:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/archive.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/archive.php on line 1
+[15-Dec-2021 14:58:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/404.php on line 1
+[15-Dec-2021 14:58:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function language_attributes() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/header.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/header.php on line 5
+[15-Dec-2021 14:58:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[15-Dec-2021 14:58:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/archive.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/archive.php on line 1
+[10-Mar-2022 16:15:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[10-Mar-2022 16:15:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[06-Sep-2022 16:37:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[30-Nov-2022 02:32:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[30-Nov-2022 02:32:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[30-Nov-2022 02:32:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
+[30-Nov-2022 02:32:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/custom-theme/index.php on line 1
