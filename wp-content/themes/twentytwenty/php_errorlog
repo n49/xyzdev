@@ -1,0 +1,4 @@
+[06-Jun-2022 00:59:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentytwenty/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentytwenty/index.php on line 17

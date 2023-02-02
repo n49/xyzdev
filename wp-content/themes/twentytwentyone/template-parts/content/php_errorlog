@@ -1,0 +1,4 @@
+[21-Oct-2021 10:23:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function the_ID() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentytwentyone/template-parts/content/content.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentytwentyone/template-parts/content/content.php on line 14

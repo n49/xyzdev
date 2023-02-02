@@ -1,0 +1,306 @@
+.tabs ul.horizontal,
+.tabs-fake ul.horizontal {
+    list-style: none;
+    margin: 0 0 50px;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    text-align: center;
+}
+
+.tabs ul.horizontal li,
+.tabs-fake ul.horizontal li {
+    display: inline-block;
+    vertical-align: top;
+    background: none;
+}
+
+.tabs ul.horizontal .sep,
+.tabs-fake ul.horizontal .sep {
+    display: inline-block;
+    vertical-align: top;
+    width: 5px;
+    height: 5px;
+    margin: 12px 15px 0;
+    background: none;
+}
+
+.tabs ul.horizontal .sep::before,
+.tabs-fake ul.horizontal .sep::before {
+    width: 100%;
+    height: 100%;
+    background-position: -250px -200px;
+}
+
+.tabs ul.horizontal li h5.title,
+.tabs ul.horizontal li .title-5,
+.tabs-fake ul.horizontal li h5.title,
+.tabs-fake ul.horizontal li .title-5 {
+    margin: 0 0 5px;
+    padding-top: 2px;
+}
+
+.tabs ul.horizontal li p,
+.tabs-fake ul.horizontal li p {
+    margin: 0 0 8px;
+}
+
+.tabs ul.horizontal li a,
+.tabs-fake ul.horizontal li a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #636469; /* 8b8c91; */
+    display: inline-block;
+    vertical-align: top;
+    border-bottom: 2px solid #8b8c91;
+    padding: 5px 25px;
+}
+
+.tabs ul.horizontal li a:hover,
+.tabs ul.horizontal li.slick-current.active a,
+.tabs ul.horizontal li.active a,
+.tabs ul.horizontal.icons li.second.active ~ li.third a,
+.tabs-fake ul.horizontal li a:hover,
+.tabs-fake ul.horizontal li.active a,
+.tabs-fake ul.horizontal li.done a {
+    border-color: #f5d83e;
+    color: #54565a;
+}
+
+.tabs .tab .float-left,
+.tabs .tab .float-right,
+.tabs-fake .tab .float-left,
+.tabs-fake .tab .float-right {
+    width: 47.5%;
+    margin: 0;
+}
+
+.tabs .tab.margin {
+    margin: 0 0 60px;
+}
+
+.tabs .tab.margin:last-child {
+    margin: 0;
+}
+
+.tabs.white {
+    background: #f1f1f1;
+}
+
+.tabs.white.has-note {
+    padding-top: 20px;
+}
+
+.tabs.white ul.horizontal {
+    text-align: left;
+    margin: 0;
+}
+
+.tabs.white ul.horizontal li {
+    width: 30%;
+    text-align: center;
+}
+
+.tabs.white ul.horizontal li a {
+    color: #54565a;
+    margin-right: 2px;
+    background: #d3d5d6;
+    display: block;
+    border: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 12px 15px 4px;
+}
+
+.tabs.white ul.horizontal li.active a,
+.tabs.white ul.horizontal li a:hover {
+    background: #fff;
+}
+
+.tabs.white ul.horizontal li h5.title,
+.tabs.white ul.horizontal li .title-5 {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.tabs.white .tab {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.tabs.white .tab .content-wrap {
+    border-top: 1px solid #c7c9ca;
+    padding: 15px 0 0;
+    margin: 0 0 10px;
+	flex-direction: row;
+}
+
+.tabs.white .tab .content-wrap h4.title,
+.tabs.white .tab .content-wrap .title-4,
+.tabs.white .tab .content-wrap p {
+    margin: 0 0 5px;
+}
+
+.tabs.white .tab .content-wrap h5,
+.tabs.white .tab .content-wrap .title-5 {
+    font-size: 12px;
+    margin: 0 0 3px;
+}
+
+.tabs.white .tab .content-wrap .content {
+    width: 60%;
+    padding: 0;
+}
+
+.tabs.white .tab .content-wrap .btn-wrap {
+    width: 40%;
+    padding: 0;
+    text-align: left;
+}
+
+.tabs.white .tab .content-wrap .btn-wrap .btn {
+    margin: 0;
+}
+
+.tabs.white .tab a.last {
+    border-top: 1px solid #c7c9ca;
+    padding: 15px 0 0;
+    display: block;
+}
+
+.tabs-wrap,
+.tabs-wrap > .wrapper {
+	height: 100%;
+}
+
+.tabs-wrap > .wrapper {
+	padding-bottom: 80px;
+}
+
+.tabs.white .tab a.btn.green {
+	width: 90%;
+	margin: 20px 0 0;
+	position: absolute;
+	left: 5%;
+	bottom: 20px;
+}
+
+.tabs ul.horizontal.icons::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+/*     width: 100%; */
+    height: 100%;
+}
+
+.tabs ul.horizontal.icons .sep,
+.tabs-fake ul.horizontal.icons .sep {
+    margin: 10px 10px 0;
+}
+
+.tabs ul.horizontal.icons .sep::before,
+.tabs-fake ul.horizontal.icons .sep::before {
+    width: 7px;
+    height: 10px;
+    background-position: -150px -150px;
+}
+
+.tabs ul.horizontal.icons.has-event .sep::before {
+    display: inline-block;
+}
+
+.tabs ul.horizontal.icons li h5.title,
+.tabs ul.horizontal.icons li .title-5,
+.tabs-fake ul.horizontal.icons li .title-5 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tabs ul.horizontal.icons li a,
+.tabs-fake ul.horizontal.icons li a {
+    padding: 5px 10px;
+    cursor: default;
+}
+
+.tabs ul.horizontal.icons li a::before,
+.tabs-fake ul.horizontal.icons li a::before {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #f1f1f1;
+    margin: 2px 3px 0 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #8b8c91;
+}
+
+.tabs ul.horizontal.icons li.first a::before,
+.tabs-fake ul.horizontal.icons li.first a::before {
+    content: '1';
+}
+
+.tabs ul.horizontal.icons li.second a::before,
+.tabs-fake ul.horizontal.icons li.second a::before {
+    content: '2';
+}
+
+.tabs ul.horizontal.icons li.third a::before,
+.tabs-fake ul.horizontal.icons li.third a::before {
+    content: '3';
+}
+
+.tabs ul.horizontal.icons li.first a {
+    border-color: #f5d83e;
+    color: #54565a;
+}
+
+body .tabs ul.horizontal.icons li.active a::before,
+body .tabs ul.horizontal.icons li.first a::before,
+body .tabs ul.horizontal.icons li.second.active ~ li.third a::before,
+body .tabs-fake ul.horizontal.icons li.done a::before {
+    background-position: -200px -300px;
+}
+
+.tabs.white.toggle {
+    background: none;
+    position: relative;
+}
+
+.tabs.white.toggle .tab {
+    background: none;
+    padding: 0;
+}
+
+.tabs.white.toggle ul.horizontal {
+    position: absolute;
+    right: 0;
+    top: -70px;
+    background: #fff;
+    border-radius: 30px;
+    padding: 2px;
+    width: 100%;
+    max-width: 210px;
+    z-index: 9;
+}
+
+.tabs.white.toggle ul.horizontal li {
+    width: 50% !important;
+}
+
+.tabs.white.toggle ul.horizontal a {
+    font-size: 14px;
+    padding: 8px 5px;
+    border-radius: 30px;
+    background: #fff;
+    width: 100%;
+}
+
+.tabs.white.toggle ul.horizontal li.active a {
+    background: #d3d5d6;
+}

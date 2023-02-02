@@ -1,0 +1,30 @@
+*   Trying 146.66.65.174...
+* TCP_NODELAY set
+* Connected to op.io (146.66.65.174) port 443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* ignoring certificate verify locations due to disabled peer verification
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: CN=op.io
+*  start date: May  4 19:06:57 2018 GMT
+*  expire date: Aug  2 19:06:57 2018 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+> GET /api/entities/jhrvg39uijr5q9mo3?scopes=Review&subSkip=0&subLimit=25 HTTP/1.1
+Host: op.io
+Accept: */*
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjU3MmE0NDI3NDdhYjg5YzkzYzE0MzVlNV9UVG55Z2E0NEBvcC5pbyIsInVzZXJfbWV0YWRhdGEiOnsiX2lkIjoiajJnZWdwYzhzZnd3Y2NzYWcifSwiaXNzIjoiaHR0cHM6Ly9vcC5pby8iLCJzdWIiOiJhcGlrZXl8ajJnZWdwYzhzZnd3Y2NzYWciLCJhdWQiOiJobTNsZmlvUHAwVWhqQnNkV0V6MG9nTW9zVVNDV2p3SCIsImV4cCI6MjE0NTkxNjgwMCwiaWF0IjoxNDk0MjY0NDM1LCJyZXNvdXJjZXMiOlt7InJvdXRlIjoiZW50aXRpZXMifSx7InJvdXRlIjoicHJvcGVydGllcyIsInF1ZXJ5IjpbbnVsbF19XX0.IGrh8vnO1o9SLfmhuEzPNSkiLYhsxcIvti9Pq-9N65s
+
+< HTTP/1.1 302 Found
+< Server: nginx
+< Date: Thu, 30 May 2019 17:36:20 GMT
+< Content-Type: text/html; charset=iso-8859-1
+< Content-Length: 267
+< Connection: keep-alive
+< Location: https://op.io/cgi-sys/suspendedpage.cgi?scopes=Review&subSkip=0&subLimit=25
+< X-Proxy-Cache: MISS
+< alt-svc: quic=":443"; ma=86400; v="43,39"
+< 
+* Connection #0 to host op.io left intact
