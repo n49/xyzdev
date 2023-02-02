@@ -1,0 +1,24 @@
+[29-Nov-2021 11:45:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php on line 12
+[07-Dec-2021 05:55:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php on line 12
+[27-Dec-2021 06:42:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php on line 12
+[18-Jan-2022 09:46:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php on line 12
+[31-Jan-2022 04:57:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php on line 12
+[04-May-2022 17:55:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/xyzstorage.com/public_html/wp-content/themes/twentynineteen/404.php on line 12
