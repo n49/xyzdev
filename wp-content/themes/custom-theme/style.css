@@ -2262,6 +2262,12 @@ div.outer {
 	list-style: none;
 }
 
+.columns.prices .col .list > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
 .columns.prices .col .list li {
 	border-bottom: 1px solid #c7c9ca;
 	padding: 10px 0;
