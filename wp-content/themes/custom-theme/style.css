@@ -144,6 +144,235 @@ body #upgrade_btn {
 	padding: 0 0 30px;
 }
 
+/* Hubspot Normal Form 2022-12-21 START */
+
+.has-form .hbspt-form form fieldset.form-columns-1 {
+	display: block;
+}
+
+.has-form .hbspt-form form {
+	font-size: 0;
+	position: relative;
+	padding: 0 40px;
+	margin: 0 0 30px;
+	background: #fff;
+	border-radius: 10px;
+	padding: 30px;
+	color: #54565a;
+	box-shadow: 0px 0px 20px 0px rgba(84, 86, 90, 0.2);
+}
+
+.has-form.form-fixed .hbspt-form form {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 0;
+	z-index: 9;
+}
+
+.has-form .hbspt-form form fieldset {
+	max-width: 100%;
+	text-align: left;
+}
+
+.has-form .hbspt-form form fieldset .hs-richtext {
+	font-size: 14px;
+	margin: 0 0 20px;
+}
+
+.has-form .hbspt-form form fieldset .hs-richtext strong {
+	font-weight: 400;
+}
+
+.has-form .hbspt-form form fieldset.form-columns-2 .hs-form-field {
+	width: 48.2%;
+}
+
+.has-form .hbspt-form form fieldset.form-columns-2 .hs-form-field:first-child {
+	margin-right: 3.6%;
+}
+
+.has-form .hbspt-form form fieldset.form-columns-1 .input,
+.has-form .hbspt-form form fieldset.form-columns-2 .input {
+	margin: 0 0 20px;
+}
+
+.has-form .hbspt-form form label {
+	display: block;
+	font-size: 14px;
+	position: relative;
+	margin: 0 0 5px;
+}
+
+.has-form .hbspt-form form fieldset.form-columns-3 .hs-form-field input {
+	font-size: 14px;
+	line-height: 1;
+	color: #54565a;
+	outline: 0;
+	padding: 12px 25px;
+	height: 40px;
+	width: 100%;
+	background: #fff;
+	border-radius: 4px;
+	border: 2px solid #fff;
+	transition: all 0.3s ease 0s;
+}
+
+.has-form .hbspt-form form fieldset.form-columns-3 .hs-form-field input:focus {
+	outline: 0;
+	border: 2px solid #54565a;
+}
+
+.has-form .hbspt-form form .hs-input {
+	font-size: 14px;
+	line-height: 1;
+	color: #54565a;
+	border: 2px solid #f1f1f1;
+	outline: 0;
+	background: #f1f1f1;
+	padding: 11px 25px;
+	height: 40px;
+	width: 100%;
+	border-radius: 4px;
+	transition: all 0.3s ease 0s;
+}
+
+.has-form .hbspt-form form .hs-input:focus {
+	outline: 0;
+	border: 2px solid #54565a;
+}
+
+.has-form .hbspt-form form .hs-input.invalid {
+	border-color: #e0581d;
+}
+
+.has-form .hbspt-form form .hs-form-booleancheckbox-display {
+	font-size: 12px;
+	padding-left: 22px;
+}
+
+.has-form .hbspt-form form .hs-input[type="checkbox"] {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 4px;
+	height: auto;
+}
+
+.has-form .hbspt-form form fieldset.form-columns-1 .hs-input {
+	width: 100%;
+}
+
+.has-form .hbspt-form form .hs-form-booleancheckbox > label > span::before {
+	content: '';
+	display: inline-block;
+	vertical-align: top;
+	background: url('img/icons.png') no-repeat scroll 0 0 transparent;
+	background-size: 600px;
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	border: 0;
+	margin: -2px 8px 0 -22px;
+	background-position: -250px 0;
+}
+
+.has-form .hbspt-form form .hs-input[type="checkbox"]:checked + span::before {
+	background-position: -300px 0;
+}
+
+.has-form .hbspt-form form .chosen-container-single .chosen-single {
+	position: static;
+}
+
+.has-form .hbspt-form form .chosen-container-single {
+	transition: none;
+}
+
+.has-form .hbspt-form form .chosen-container-single.chosen-with-drop {
+	border: 2px solid #54565a;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.has-form .hbspt-form form .hs-submit {
+	width: 100%;
+	text-align: left;
+}
+
+.has-form .hbspt-form form .hs-button {
+	color: #54565a;
+	background: none;
+	border: 2px solid #434548;
+	width: auto;
+	padding: 8px 23px;
+	margin: 0;
+}
+
+.has-form .hbspt-form form .hs-button:hover {
+	color: #000000;
+	background: #5ac4ba;
+	border-color: #5ac4ba;
+}
+
+.has-form .hbspt-form form .hs-dateinput {
+	position: relative;
+}
+
+.has-form .hbspt-form form .hs-dateinput::before {
+	content: '';
+	display: inline-block;
+	vertical-align: top;
+	background: url('img/icons.png') no-repeat scroll 0 0 transparent;
+	width: 21px;
+	height: 21px;
+	background-position: -350px -200px;
+	position: absolute;
+	right: 24px;
+	top: 10px;
+	background-size: 600px;
+}
+
+.has-form .hbspt-form form .hs-error-msgs {
+	position: relative;
+	list-style: none;
+	margin: -12px 0 20px;
+	padding: 0;
+}
+
+.has-form .hbspt-form form .hs-error-msgs label {
+	font-size: 13px;
+}
+
+.has-form .submitted-message {
+	font-size: 30px;
+	line-height: 1.2;
+	text-align: center;
+	margin: 20px 0;
+	border: 0;
+	position: relative;
+	border-radius: 10px;
+	padding: 30px;
+	color: #54565a;
+	background: #fff;
+	box-shadow: 0 0 20px rgba(84,86,90,.2);
+}
+
+@media only screen and (max-width: 480px) {
+	.has-form .hbspt-form form fieldset.form-columns-2 .hs-form-field,
+	.has-form .hbspt-form form.hs-form .form-columns-2 .hs-form-field .hs-input,
+	.has-form .hbspt-form form.hs-form fieldset.form-columns-1 .hs-input {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	.has-form .hbspt-form form.hs-form fieldset.form-columns-1 .hs-input[type="checkbox"] {
+		width: auto;
+	}
+}
+
+/* Hubspot Normal Form 2022-12-21 END */
+
 /* Temporal Styling */
 
 .header .top ul {
