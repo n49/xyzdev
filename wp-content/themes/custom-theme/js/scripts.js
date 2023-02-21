@@ -75,6 +75,15 @@ jQuery(document).ready(function($){
 	$('.date input').flatpickr();
 
 	/* Select */
+	
+	if($('.hbspt-form').length){
+		setTimeout(function() {
+			$('.hbspt-form select').chosen({
+				inherit_select_classes: true,
+				disable_search_threshold: 100
+			});
+		}, 100);
+	}
 
 	if($('.hbspt-form').length){
 		setTimeout(function() {
