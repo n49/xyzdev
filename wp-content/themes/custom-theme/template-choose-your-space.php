@@ -10,7 +10,7 @@
 	// var_dump($unit_type_prices);
 
 	if(!$unit_type_prices || sizeof($unit_type_prices) == 1){
-		wp_redirect('/rent-now');
+		//wp_redirect('/rent-now');
 	}
 
 	$prices = [];
@@ -64,7 +64,19 @@
 
 	$promo = $_COOKIE["promo"];
 
+	// Get location page ID
 
+	$locations = array(
+		1 => 'Scarborough',
+		2 => 'Mississauga',
+		3 => 'Toronto West',
+		4 => 'Etobicoke',
+		5 => 'Mobile',
+		6 => 'Toronto Midtown',
+		7 => 'Toronto Downtown'
+	);
+
+	$current_location = get_page_by_title($locations[$location], OBJECT, 'locations');
 ?>
 
 <div class="header-wrap">
@@ -131,16 +143,13 @@
 								<?php echo $_COOKIE["promoLabel"]; ?>
 							</p>
 						<?php endif; ?>
-
 					</div>
 
-					<ul class="list">
-						<li>lowest price</li>
-						<li>easy code access</li>
-						<li>easy payment on the customer portal</li>
-						<li>free wi-fi</li>
-						<li>complimentary on site moving dollies</li>
-					</ul>
+					<?php if(get_field('space_basic', $current_location)): ?>
+						<div class="list">
+							<?php the_field('space_basic', $current_location); ?>
+						</div>
+					<?php endif; ?>
 
 					<?php if($basic_count):?>
 						<a class="btn btn-hover-grey select-space" data-plan="Basic" data-price="<?php echo $basic; ?>">select</a>
@@ -183,12 +192,11 @@
 						<?php endif;?>
 					</div>
 
-					<ul class="list">
-						<li>all features of basic plus:</li>
-						<li>closer to the elevators, docks, and entry / exits</li>
-						<li>24 hour access available</li>
-						<li>half price truck rental for move in</li>
-					</ul>
+					<?php if(get_field('space_value', $current_location)): ?>
+						<div class="list">
+							<?php the_field('space_value', $current_location); ?>
+						</div>
+					<?php endif; ?>
 
 					<?php if($value_count):?>
 						<a class="btn btn-hover-teal select-space" data-plan="Value" data-price="<?php echo $value; ?>">select</a>
@@ -232,12 +240,11 @@
 						<?php endif;?>
 					</div>
 
-					<ul class="list">
-						<li>all features of basic and value plus:</li>
-						<li>best locations; closest to the elevators, docks, and entry / exits</li>
-						<li>free lock</li>
-						<li>free price truck rental for move in</li>
-					</ul>
+					<?php if(get_field('space_premium', $current_location)): ?>
+						<div class="list">
+							<?php the_field('space_premium', $current_location); ?>
+						</div>
+					<?php endif; ?>
 
 					<?php if($premium_count):?>
 						<a class="btn btn-hover-grey select-space" data-plan="Premium" data-price="<?php echo $premium; ?>">select</a>
