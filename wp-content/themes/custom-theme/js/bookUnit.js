@@ -105,6 +105,11 @@ jQuery(document).ready(function($){
 						tempPrice = tempPrice / 2;
 						$(`#unit-sp-price-${id}`).text(`$${tempPrice.toFixed(2)}/mo`)
 						$(`#post-${id}`).find('.rent-now-button').attr("data-promo", "0.5")
+						// find price for reservation and make it equal to fullPrice
+
+						console.log("hello", fullPrice, result[0]['DiscountName'])
+						$(`#reservation-price-${id}`).text(`$${fullPrice.toFixed(2)}/mo`)
+
 
 					} else if(result[0]['DiscountName'].includes("One Month Free")){
 						var elem = document.getElementById('price-tag-'+id);
@@ -149,6 +154,11 @@ jQuery(document).ready(function($){
 
 						$(`#unit-sp-price-${id}`).text(`$${tempPrice.toFixed(2)}/mo`)
 						$(`#post-${id}`).find('.rent-now-button').attr("data-promo", "0.5")
+						
+						// find price for reservation and make it equal to fullPrice
+
+						console.log("hello", fullPrice, result[0]['DiscountName'])
+						$(`#reservation-price-${id}`).text(`$${fullPrice.toFixed(2)}/mo`)
 							
 					}
 					else if(result[0]['DiscountName'] == "3 Month 4x3x4 Promo"){

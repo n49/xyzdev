@@ -412,7 +412,7 @@
 										<p id="units-available-<?php echo $unitID; ?>"><?php echo $availableUnit; ?> units left at this location</p>
 									</div>
 									<div class="col text border">
-										<h3 class="title-4 first"> $<?php echo $unitPrice; ?>/mo</h3>
+										<h3 class="title-4 first" id="reservation-price-<?php echo $unitID; ?>"> $<?php echo $unitPrice; ?>/mo</h3>
 										<p class="title-5 last risk-free">risk free</p>
 
 										<a class="btn btn-reserve"
