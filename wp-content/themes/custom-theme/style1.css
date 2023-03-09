@@ -317,7 +317,6 @@ body #upgrade_btn {
 
 .has-form .hbspt-form form .hs-dateinput {
 	position: relative;
-	text-align-last: left;
 }
 
 .has-form .hbspt-form form .hs-dateinput::before {
@@ -2489,12 +2488,6 @@ div.outer {
 	padding: 0 0 100px;
 	margin: 10px 25px 0;
 	list-style: none;
-}
-
-.columns.prices .col .list > ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 .columns.prices .col .list li {
@@ -7654,33 +7647,5 @@ a img.aligncenter {
 	h2,
 	h3 {
 		page-break-after: avoid;
-	}
-}
-
-/* 2023-02-23 changes */
-
-.img-wrap.height {
-	height: 70px;
-}
-
-.img-wrap.height img {
-	top: 0;
-	position: relative;
-	transform: none;
-	margin: 0 auto;
-}
-
-.has-form .hbspt-form form .hs-input {
-	-webkit-appearance: none;
-	text-align: left;
-}
-
-input::-webkit-date-and-time-value {
-  text-align: left;
-}
-
-@media only screen and (max-width: 800px) {
-	.has-form.form-fixed .hbspt-form form {
-		position: relative;
 	}
 }

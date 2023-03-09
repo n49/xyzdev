@@ -1,4 +1,5 @@
 <?php
+// var_dump('show me all', $_COOKIE);
 	if (isset($_COOKIE['unit'])) {
 		$unit = json_decode(stripslashes($_COOKIE['unit']), true);
 		$unit_id = $unit['unit'];

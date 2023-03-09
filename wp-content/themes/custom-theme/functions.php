@@ -372,7 +372,7 @@ function html5blank_styles()
 	wp_register_style('flatpickrcss', get_template_directory_uri() . '/css/flatpickr.css', array(), '4.6.6', 'all');
     wp_enqueue_style('flatpickrcss');
 
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0.16', 'all');
+    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0.19', 'all');
     wp_enqueue_style('html5blank');
 }
 
