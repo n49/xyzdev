@@ -317,6 +317,7 @@ body #upgrade_btn {
 
 .has-form .hbspt-form form .hs-dateinput {
 	position: relative;
+	text-align-last: left;
 }
 
 .has-form .hbspt-form form .hs-dateinput::before {
