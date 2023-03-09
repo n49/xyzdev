@@ -7649,31 +7649,3 @@ a img.aligncenter {
 		page-break-after: avoid;
 	}
 }
-
-/* 2023-02-23 changes */
-
-.img-wrap.height {
-	height: 70px;
-}
-
-.img-wrap.height img {
-	top: 0;
-	position: relative;
-	transform: none;
-	margin: 0 auto;
-}
-
-.has-form .hbspt-form form .hs-input {
-	-webkit-appearance: none;
-	text-align: left;
-}
-
-input::-webkit-date-and-time-value {
-  text-align: left;
-}
-
-@media only screen and (max-width: 800px) {
-	.has-form.form-fixed .hbspt-form form {
-		position: relative;
-	}
-}
