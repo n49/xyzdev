@@ -11,7 +11,17 @@
 	$parent = $post->post_parent;
 	$parent_title = get_the_title($parent);
 
+					function monthly_to_daily($monthly_price) {
+$days_in_month = date("t");
 
+$daily = $monthly_price / $days_in_month;
+
+// round to 2 decimal places
+$daily = round($daily, 2);
+return $daily;
+
+}
+	
 
 	$locations_array = array(
 		'Scarborough' => 1,
@@ -79,8 +89,15 @@
 		if(!$apiunit) {
 			$apiunit = [];
 }
+// 		dd($apiunit);
 		foreach($apiunit as $k => $u){
-			if($u["AvailableUnits"] != '0'){
+						if($u["AvailableUnits"] == '0' && strpos($u["UnitTypeCode"], '*') !== false && $u["Height"] != '0') {
+// 							dd($u);
+							$u['UnavailableMode'] = true;
+							$u['AvailableUnits'] = '1';
+						}
+// 			var_dump($u);
+			if($u["AvailableUnits"] != '0') {
 				if(!in_array($u['UnitTypeId'],$unitID_array)){
 					array_push($unitID_array,$u['UnitTypeId']);
 					array_push($units_array,$u);
@@ -153,6 +170,7 @@
 						else $unitSize = 'large';
 					}
 			}
+// 			var_dump($unitCalculate);
 			if($unitCalculate > 2) $label = "compact";
 			if($unitCalculate >= 25) $label = "small";
 			if($unitCalculate >= 75) $label = "medium";
@@ -267,6 +285,34 @@
 								}
 							?>
 						</p>
+					
+						<div class="tabs-wrap has-tooltip">
+				<div class="normal-tooltip">
+					<p>unit rental cost</p>
+
+					<div style="width:auto" class="tooltip">
+						You have the option to see unit rental costs monthly or daily. Monthly rent is the rent cost from the 1st day of the month to the last day of the month. Daily rent is the rate you would pay daily, calculated by dividing the total days in the month by the monthly rent value. All payments are made on the 1st of the month, payments cannot be made daily.
+					</div>
+				</div>
+					</div>
+					
+									<div class="tabs white toggle active">
+
+										<ul class="horizontal">
+						<li class="monthlyMode">
+							<a class="monthlySwitch normal">
+								monthly
+							</a>
+						</li>
+
+						<li class="dailyMode">
+							<a class="dailySwitch normal">
+								daily
+							</a>
+						</li>
+					</ul>
+					</div>
+
 				<div class="slider-units">
 					<?php foreach($master[$ck] as $unit):  ?>
 						<?php if(($unit["AvailableUnits"] != 0 || $unit['UnitTypeId'] == '16') && $this_location_code != 5): ?>
@@ -280,15 +326,15 @@
 					if($unit["UnitTypeCode"] == "8X32 PARKING"){
 						$unitSize = "Extra Large";
 					}
-							 		$unitLength = $unit["Length"];
+						 		$unitLength = $unit["Length"];
 									$unitFeatures = $unit["UnitTypeCode"];
 									$unitPrice = $unit["Rent"];
+									$unitDailyPrice = monthly_to_daily($unitPrice);
 									$unitCategory = $unit["CategoryName"];
 									$unitInternetPrice = $unit["InternetPrice"];
 									$unitDescription = $unit["UnitTypeDescription"];
 									$unit_details = $unit["OnlineMessage"];
 									$availableUnit = $unit["AvailableUnits"];
-
 
 									$lowest_price = $unitInternetPrice;
 									if($unit_level_prices[$unitID]){
@@ -320,6 +366,7 @@
 										<h3 class="title title-4">
 											<span><?php echo $category; ?></span>
 											<?php echo $unitSize ;?>
+											<?php if($unit['UnavailableMode'])  echo '**'; ?>
 										</h3>
 
 										<button type="button" class="icon btn-hide">
@@ -409,13 +456,21 @@
 										<div id="discount-expiration-<?php echo $unitID; ?>"></div>
 										<div id="discount-cookie-<?php echo $unitID?>" style="height:0px;width:0px;font-size:0px"></div>
 
+										<?php if($unit['UnavailableMode']) :?>
+										<p id="units-available-<?php echo $unitID; ?>">1 units left at this location **</p>
+										<?php else: ?>
 										<p id="units-available-<?php echo $unitID; ?>"><?php echo $availableUnit; ?> units left at this location</p>
+<?php endif; ?>
 									</div>
 									<div class="col text border">
-										<h3 class="title-4 first"> $<?php echo $unitPrice; ?>/mo</h3>
+										<span style="display:none" id="monthlyPriceHidden"><?php echo $unitPrice; ?></span>
+										<span style="display:none" id="dailyPriceHidden"><?php echo $unitDailyPrice; ?></span>
+
+										<h3 class="title-4 first"> $<span style="display:inline" id="unitPriceSection"><?php echo $unitPrice; ?></span><span style="display:inline" id="unitTermSection">/mo</span></h3>
 										<p class="title-5 last risk-free">risk free</p>
 
 										<a class="btn btn-reserve"
+										   	data-unavailmode="<?php echo $unit['UnavailableMode']; ?>"
 											 data-unit="<?php echo $unitID; ?>"
 											 data-location="<?php echo $this_location_code?>"
 											 data-amount="1"
@@ -438,13 +493,17 @@
 										</ul>
 									</div>
 									<div class="col last border">
+										
+									<span style="display:none" id="discountedRentAmount-<?php echo $unitID; ?>"><?php echo $unitPrice ?></span>
+
 										<?php if($unitPrice != $lowest_price): ?>
+
 											<del>
 												<span id="unit-price-<?php echo $unitID; ?>">
 													$<?php echo $unitPrice; ?>
 												</span>
 											</del>
-											<h3 class="title-4 no-margin" id="unit-sp-price-<?php echo $unitID; ?>"> $<?php echo $lowest_price; ?>/mo</h3>
+											<h3 class="title-4 no-margin" id="unit-sp-price-<?php echo $unitID; ?>"> $<span style="display:inline" id="unitRentPriceSection-<?php echo $unitID; ?>"><?php echo $lowest_price; ?></span><span style="display:inline" id="unitRentTermSection-<?php echo $unitID; ?>">/mo</span></h3>
 										<p
 											 	class="title-5 online-special-flag hide"
 											 id="special-flag-<?php echo $unitID; ?>"
@@ -452,10 +511,10 @@
 										 ><?php echo $tagline; ?></p>
 											<a  class="btn rent-now-button"
 										<?php else: ?>
-												<h3 class="title-4 no-margin  no-special"> $<?php echo $lowest_price; ?>/mo</h3>
+												<h3 id="unit-sp-price-<?php echo $unitID; ?>" class="title-4 no-margin no-special-label no-special"> $<?php echo $lowest_price; ?>/mo</h3>
 											<a  class="btn rent-now-button no-special" style="margin-top:40px;"
 										<?php endif; ?>
-
+												data-unavailmode="<?php echo $unit['UnavailableMode']; ?>"
 												data-unit="<?php echo $unitID; ?>"
 												data-location="<?php echo $this_location_code?>"
 												data-amount="1"
@@ -597,7 +656,8 @@
 											<h3 class="title-4 first"> $175.00/mo</h3>
 											<p class="title-5 last">risk free reservation</p>
 
-											<a class="btn btn-reserve" data-unit="22" data-location="1" data-amount="1" onclick="setCookiesRegular(`5'w x 10'd X 8'h`,175.00,10,5,8,175.00,22)"> reserve now </a>
+											<a class="btn btn-reserve" data-unavailmode="<?php echo $unit['UnavailableMode']; ?>"
+ data-unit="22" data-location="1" data-amount="1" onclick="setCookiesRegular(`5'w x 10'd X 8'h`,175.00,10,5,8,175.00,22)"> reserve now </a>
 
 											<ul class="hide">
 												<li> no credit card required to reserve</li>

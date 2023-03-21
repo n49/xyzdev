@@ -1,8 +1,87 @@
 const setCookie = (k, v, path) => {
-	document.cookie = `${k}=${v};path=${path}`;
+	document.cookie = `${k}=${v};path=/`;
 }
+const getCookie = (name) => {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
 
 jQuery(document).ready(function($){
+	
+// 	if(getCookie('priceMode')) {
+// 		var priceMode = getCookie('priceMode');
+// 		if(priceMode == 'daily') {
+// 			$('.dailySwitch').click();
+// 		}
+// 		if(priceMode == 'monthly') {
+// 			$('.monthlySwitch').click();
+// 		}
+// 	}
+
+	$('.dailySwitch').on("click", (ev) => {
+			setCookie('priceMode', 'daily', '/choose-your-space');
+		$('.dailyMode').addClass('active');
+		$('.monthlyMode').removeClass('active')
+		console.log('daily switch clicked here');
+// 		ev.preventDefault();
+		$('.retrieve-discount').each((index, element) => {
+			const id = $(element).data('id');
+			console.log('k ho yso', id);
+			var monthlyPrice = $(`#post-${id}`).find('#monthlyPriceHidden').text();
+			var dailyPrice = $(`#post-${id}`).find('#dailyPriceHidden').text();
+			
+			var discountedRent = $(`#discountedRentAmount-${id}`).text();
+			console.log('got the current rent', discountedRent);
+			var today = new Date();
+    		var daysInMonth = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
+    
+
+		    var dp = discountedRent / daysInMonth;
+		    var op = Number(discountedRent / daysInMonth)*2;
+
+
+			$(`#post-${id}`).find('#unitPriceSection').text(dailyPrice);
+			$(`#post-${id}`).find('#unitTermSection').text('/day');
+			
+			$(`#unit-sp-price-${id}`).text(`$${dp.toFixed(2)}/day`);
+			$(`#post-${id}`).find('.no-special-label').text(`$${dp.toFixed(2)}/day`);
+			
+			$(`#unit-price-${id}`).text(`$${op.toFixed(2)}/day`);
+
+// 			$(`#post-${id}`).find('#unitRentPriceSection').text(dailyRent);
+// 			$(`#post-${id}`).find('#unitRentTermSection').text('/day');			
+		})
+	});
+	
+		$('.monthlySwitch').on("click", (ev) => {
+			setCookie('priceMode', 'monthly', '/choose-your-space');
+			$('.monthlyMode').addClass('active');
+			$('.dailyMode').removeClass('active')
+
+		console.log('daily switch clicked here');
+// 		ev.preventDefault();
+		$('.retrieve-discount').each((index, element) => {
+			const id = $(element).data('id');
+			console.log('k ho yso', id);
+			var monthlyPrice = $(`#post-${id}`).find('#monthlyPriceHidden').text();
+			var dailyPrice = $(`#post-${id}`).find('#dailyPriceHidden').text();
+			
+			var discountedRent = $(`#discountedRentAmount-${id}`).text();
+var op = Number(discountedRent) * 2;
+			$(`#post-${id}`).find('#unitPriceSection').text(monthlyPrice);
+			$(`#post-${id}`).find('#unitTermSection').text('/mo');
+			
+			$(`#post-${id}`).find('.no-special-label').text(`$${(Number(discountedRent).toFixed(2))}/mth`);
+			$(`#unit-sp-price-${id}`).text(`$${(Number(discountedRent).toFixed(2))}/mth`);
+			$(`#unit-price-${id}`).text(`$${op.toFixed(2)}/mth`);
+
+// 			$(`#post-${id}`).find('#unitRentPriceSection').text(monthlyRent);
+// 			$(`#post-${id}`).find('#unitRentTermSection').text('/mo');			
+
+		})
+
+	});
 
 	$('.btn-reserve').on("click", ({currentTarget}) => {
 		gtag('event', 'Reservation Clicked');
@@ -20,7 +99,12 @@ jQuery(document).ready(function($){
 			availableUnits: parseInt(data.available),
 		}
 
-		const url = "/customer-details";
+		let url = "/customer-details";
+		
+		if(parseInt(data.unavailmode) == 1) {
+			url = '/customer-details-unavailable-units-alternate-reservation/';
+		}
+
 
 		Object.keys(cookieData).forEach(key => {
 			setCookie(key, cookieData[key], url)
@@ -34,7 +118,7 @@ jQuery(document).ready(function($){
 	$('.rent-now-button').on("click", ({currentTarget}) => {
 		gtag('event', 'Rentnow Clicked');
 		const data = $(currentTarget).data()
-
+		console.log('show me this', data);
 		const cookieData = {
 			unitLocation: parseInt(data.location),
 			unitType: parseInt(data.id),
@@ -47,14 +131,19 @@ jQuery(document).ready(function($){
 			promo: parseFloat(data.promo),
 			promoLabel: data.promolabel
 		}
-		let url = "/rent-now";
+// 		let url = "/rent-now";
 
 		Object.keys(cookieData).forEach(key => {
 			setCookie(key, cookieData[key], url)
 		})
+		
+	
 
-		url = "/choose-your-space";
+		var url = "/choose-your-space";
 
+		if(parseInt(data.unavailmode) == 1) {
+			url = '/rent-now-unavailable-units-alternate-rental/';
+		}
 		Object.keys(cookieData).forEach(key => {
 			setCookie(key, cookieData[key], url)
 		})
@@ -86,7 +175,7 @@ jQuery(document).ready(function($){
 					}
 					if(result[0]['DiscountName'].includes("50% Off Rent - 3 Months")){
 						var elem = document.getElementById('price-tag-'+id);
-						document.querySelector(`#special-flag-${id}`).style.display = "block";
+						document.querySelectorAll(`#special-flag-${id}`).style.display = "block";
 						if(elem.classList.contains("no-price-tag") && $(window).width() >= 480){
 
 							elem.style.width = "50px";
@@ -96,7 +185,7 @@ jQuery(document).ready(function($){
 							elem.src = "/wp-content/uploads/2019/10/Tag@2x.png";
 
 						} else {
-							document.getElementById("p-"+id).innerHTML = "50% OFF FIRST 3 MONTHS";
+							document.querySelectorAll("p-"+id).innerHTML = "50% OFF FIRST 3 MONTHS";
 						}
 						let tempPrice = parseFloat($(`#unit-sp-price-${id}`).text().replace("$", "").replace("/mo",""));
 						const fullPrice = tempPrice;
@@ -104,6 +193,8 @@ jQuery(document).ready(function($){
 
 						tempPrice = tempPrice / 2;
 						$(`#unit-sp-price-${id}`).text(`$${tempPrice.toFixed(2)}/mo`)
+						$(`#discountedRentAmount-${id}`).text(tempPrice.toFixed(2))
+
 						$(`#post-${id}`).find('.rent-now-button').attr("data-promo", "0.5")
 
 					} else if(result[0]['DiscountName'].includes("One Month Free")){
@@ -148,6 +239,8 @@ jQuery(document).ready(function($){
 						tempPrice = tempPrice / 2;
 
 						$(`#unit-sp-price-${id}`).text(`$${tempPrice.toFixed(2)}/mo`)
+												$(`#discountedRentAmount-${id}`).text(tempPrice.toFixed(2))
+
 						$(`#post-${id}`).find('.rent-now-button').attr("data-promo", "0.5")
 							
 					}

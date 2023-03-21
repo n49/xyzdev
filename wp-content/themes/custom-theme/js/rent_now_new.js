@@ -1,9 +1,59 @@
+const setCookie = (k, v, path) => {
+	document.cookie = `${k}=${v};path=/`;
+//     window.location = path
+}
+function getCookie(name) {
+    function escape(s) { return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1'); }
+    var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+    return match ? match[1] : null;
+}
+
 $(document).on('reset', '.wpcf7-form', function(e) {
     e.preventDefault();
 
 });
 
 jQuery(document).ready(function($){
+	
+		function convertTodayDate(rent) {
+			var today = new Date();
+    		var daysInMonth = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
+		    var dp = rent / daysInMonth;
+			return dp;
+	}
+	
+		if(getCookie('priceMode')) {
+			
+					var priceMode = getCookie('priceMode');
+			console.log('got the price mode', priceMode);
+		if(priceMode == 'daily') {
+			$('.dailyMode').addClass('active');
+			$('.monthlyMode').removeClass('active');
+		}
+
+
+		}
+	
+	var monthlyRentAmount = $('#monthlyRentNowAmountSection').text();
+		monthlyRentAmount = monthlyRentAmount.match(/\d+\.\d+/)[0];
+	
+	var dailyRentAmount = convertTodayDate(monthlyRentAmount).toFixed(2);
+	
+	
+			$('.monthlySwitch').on("click", (ev) => {
+				setCookie('priceMode', 'monthly', '/');
+				$('#rentNowAmountSection').text(`$${monthlyRentAmount}/mth`);
+// 				$('#rentalDescriptionLabel').text('prorated monthly rent');
+// 				$('#monthlyProRatedAmountS').text(`$${monthlyRentAmount}`);
+			});
+	
+			$('.dailySwitch').on("click", (ev) => {
+				setCookie('priceMode', 'daily', '/');
+				$('#rentNowAmountSection').text(`$${dailyRentAmount}/day`);
+// 				$('#rentalDescriptionLabel').text('prorated daily rent');
+// 				$('#monthlyProRatedAmountS').text(`$${dailyRentAmount}`);
+			});
+	
 // 	function createToken() {
 // 				customCheckout.createToken(function(result) {
 // 		console.log('what ', result);
@@ -49,7 +99,8 @@ jQuery(document).ready(function($){
 		
 // 	}
 	   
-
+		  var selectedSpace = window.Cookies.get().selectedSpace;
+			console.log('selected space is', selectedSpace);
 	
 	function getCookie(name) {
     var cookieValue = null;
@@ -135,11 +186,15 @@ var insurances = JSON.parse(getCookie("InsuranceSchemes"));
 		var proRatedAmount = document.getElementById('monthlyProRatedAmount');
 		var salesTaxText = document.getElementById('salesTaxText');
 		var totalText = document.getElementById('totalCreditCardAmount');
-		
-		var newTotal = parseFloat(proRatedAmount.innerText) + parseFloat(insurancePrice) + parseFloat(salesTaxText.innerText);
+		var newTax = (parseFloat(proRatedAmount.innerText) + parseFloat(insurancePrice))*0.13;
+		var newTotal = parseFloat(proRatedAmount.innerText) + parseFloat(insurancePrice) + newTax;
 				console.log('new total', newTotal);
 		 totalText.innerText = newTotal.toFixed(2);
 		document.getElementById('insuranceText').innerText = parseFloat(insurancePrice).toFixed(2);
+		document.getElementById('salesTaxText').innerText = parseFloat(newTax).toFixed(2);
+
+		
+		
   console.log('the new value', insuranceField.value);
 })
 );

@@ -7,7 +7,7 @@
 
 	$unit_type_prices = get_unit_type_prices($location)[$unit_type];
 
-	// var_dump($unit_type_prices);
+// 	dd($unit_type_prices);
 
 	if(!$unit_type_prices || sizeof($unit_type_prices) == 1){
 		wp_redirect('/rent-now');
@@ -97,17 +97,35 @@
 					<h1><?php echo $label; ?></h1>
 				</div>
 			</div>
+			
+					<div class="tabs white toggle active">
+					<ul class="horizontal">
+						<li class="monthlyMode">
+							<a class="monthlySwitch normal">
+								monthly
+							</a>
+						</li>
+
+						<li class="dailyMode">
+							<a class="dailySwitch normal">
+								daily
+							</a>
+						</li>
+
+						
+					</ul>
+				</div>
 
 			<div class="columns columns-3 flex prices has-btn mt-20">
 				<div class="col">
 					<div class="title">
 						<h4>basic</h4>
 						<?php if($promo && $basic != "not available"): ?>
-							<del style="color:red;">
+							<del id="basicRedAmount" style="color:red;">
 								<?php echo "$" . number_format($basic, 2, '.', '');; ?>
 							</del>
 						<?php endif; ?>
-						<h3>
+						<h3 id="basicAmount">
 							<?php
 								if($basic == "not available"){
 									echo $basic;
@@ -153,11 +171,11 @@
 					<div class="title blue">
 						<h4>value</h4>
 						<?php if($promo && $value != "not available"): ?>
-							<del style="color:red;">
+							<del id="valueRedAmount" style="color:red;">
 								<?php echo "$" . number_format($value, 2, '.', '');; ?>
 							</del>
 						<?php endif; ?>
-						<h3>
+						<h3 id="valueAmount">
 							<?php
 								if($value == "not available"){
 									echo $value;
@@ -201,11 +219,11 @@
 					<div class="title yellow">
 						<h4>premium</h4>
 						<?php if($promo && $premium != "not available"): ?>
-							<del style="color:red;">
+							<del id="premiumRedAmount" style="color:red;">
 								<?php echo "$" . number_format($premium, 2, '.', ''); ?>
 							</del>
 						<?php endif; ?>
-						<h3>
+						<h3 id="premiumAmount">
 							<?php
 								if($premium == "not available"){
 									echo $premium;
@@ -236,7 +254,7 @@
 						<li>all features of basic and value plus:</li>
 						<li>best locations; closest to the elevators, docks, and entry / exits</li>
 						<li>free lock</li>
-						<li>free price truck rental for move in</li>
+						<li>free truck rental with move in</li>
 					</ul>
 
 					<?php if($premium_count):?>
@@ -264,4 +282,4 @@
 
 <?php get_template_part('module-cta-simple'); ?>
 
-<?php get_footer(); ?>
+<?php get_footer(); 

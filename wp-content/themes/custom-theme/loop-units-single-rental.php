@@ -5,6 +5,27 @@
 		$unit_amount = $unit['amount'];
 	}
 
+//monthly pricing
+$mode = 0;
+
+function monthly_to_daily($monthly_price) {
+$days_in_month = date("t");
+
+$daily = $monthly_price / $days_in_month;
+
+// round to 2 decimal places
+$daily = round($daily, 2);
+return $daily;
+}
+	
+
+	if(isset($_COOKIE['priceMode'])) {
+		if($_COOKIE['priceMode'] == 'daily') {
+			//daily pricing
+			$mode = 1;
+		}
+	}
+
 	$unit_info = array(
 	    'unit_location' => $_COOKIE['unitLocation'],
 	    'unit_quantity' => $_COOKIE['unitQuantity'],
@@ -57,7 +78,36 @@ $locations_street_address_array = array(
 
 
 ?>
+<div style="display: flex; justify-content: space-between; align-items: center">
+	
 
+						<div style="height:auto; float:left" class="tabs-wrap has-tooltip">
+				<div style="position:relative; top: auto; right: auto; z-index: auto" class="normal-tooltip">
+					<p>unit rental cost</p>
+
+					<div style="width:700px" class="tooltip">
+						You have the option to see unit rental costs monthly or daily. Monthly rent is the rent cost from the 1st day of the month to the last day of the month. Daily rent is the rate you would pay daily, calculated by dividing the total days in the month by the monthly rent value. All payments are made on the 1st of the month, payments cannot be made daily.
+					</div>
+				</div>
+					</div>
+		<div style="float:right; width: 50%" class="tabs white toggle active">
+					<ul style="position:relative; top:0px" class="horizontal">
+						<li class="monthlyMode">
+							<a class="monthlySwitch normal">
+								monthly
+							</a>
+						</li>
+
+						<li class="dailyMode">
+							<a class="dailySwitch normal">
+								daily
+							</a>
+						</li>
+
+						
+					</ul>
+				</div>
+	</div>
 
 <h3 class="title">
 	<span class="span-mod">rental</span> summary
@@ -108,8 +158,12 @@ $locations_street_address_array = array(
 
 		<h4 class="title has-price">
 			<?php echo $dimensions; ?>
-
-			<span>$<?php echo number_format($price_edit, 2) ?></span>
+			<span style="display:none" id="monthlyRentNowAmountSection">$<?php echo number_format(($price_edit), 2) ?></span>
+			<?php if($mode): ?>
+			<span id="rentNowAmountSection">$<?php echo number_format(monthly_to_daily($price_edit), 2) ?>/day</span>
+			<?php else: ?>
+			<span id="rentNowAmountSection">$<?php echo number_format($price_edit, 2) ?>/mth</span>
+			<?php endif; ?>
 		</h4>
 
 		<div class="cost-wram">
@@ -117,20 +171,38 @@ $locations_street_address_array = array(
 				<?php _e('cost to move-in', 'html5blank'); ?>
 			</h3>
 
-			<p>
-				<?php _e('protated monthly rent', 'html5blank'); ?>
+			<p id="rentalDescriptionLabel">
+							<?php if($mode): ?>
 
-				<span>$<span id="monthlyProRatedAmount"><?php echo $proratedAmount; ?></span></span>
+				<?php _e('prorated monthly rent', 'html5blank'); ?>
+							<?php else: ?>
+
+				<?php _e('prorated monthly rent', 'html5blank'); ?>
+			<?php endif; ?>
+
+							<?php if(1==2): ?>
+
+				<span>$<span id="monthlyProRatedAmountS"><?php echo monthly_to_daily($proratedAmount); ?></span></span>
+											<?php else: ?>
+				<span>$<span id="monthlyProRatedAmountS"><?php echo $proratedAmount; ?></span></span>
+			<?php endif; ?>
+
 			</p>
+				<span style="display:none">$<span style="display:none" id="monthlyProRatedAmount"><?php echo ($proratedAmount); ?></span></span>
 
  			<p>
 				<?php _e('specials: ', 'html5blank'); ?> <br><span class="sale">
 				<span class="tester12323" style="all:unset; display:block"><?php _e('Takes effect  at first full month', 'html5blank'); ?></span>
-				<br>
+				<br style="display:none">
 				<span style="all:unset"><?php _e('(50% off rent - 3 months)', 'html5blank'); ?></span>
 				</span>
+							<?php if(1==2): ?>
 
+				<span>($<?php echo number_format((monthly_to_daily($price_edit)/2), 2) ?>)</span>
+															<?php else: ?>
 				<span>($<?php echo number_format(($price_edit/2), 2) ?>)</span>
+			<?php endif; ?>
+
 			</p> 
 
 			<p>
@@ -154,21 +226,31 @@ $locations_street_address_array = array(
 
 			<p>
 				<?php _e('estimated sales tax', 'html5blank'); ?>
+							<?php if(1==2): ?>
 
+				<span>$<span id="salesTaxText"><?php echo monthly_to_daily($price_tax_edit); ?></span></span>
+																			<?php else: ?>
 				<span>$<span id="salesTaxText"><?php echo $price_tax_edit; ?></span></span>
+<?php endif; ?>
 			</p>
 
 	
 
 			<p class="total last">
 				<?php _e('total', 'html5blank'); ?>
+							<?php if(1==2): ?>
 
+				<span>$<span id="totalCreditCardAmount"><?php echo monthly_to_daily($price_total_edit); ?></span></span>
+																							<?php else: ?>
 				<span>$<span id="totalCreditCardAmount"><?php echo $price_total_edit; ?></span></span>
+<?php endif; ?>
+
 			</p>
 		</div>
 	</div>
 </div>
 
-<?php if(get_field('customer_notice')): ?>
-	<?php the_field('customer_notice'); ?>
-<?php endif; ?>
+XYZ Storage charges rent on the 1st of every month. The price shown above is your monthly rental price, prorated to the number of days in your first month of stay.  Leaving before the end of the month? No problem, we will prorate your rent once you have moved out of your unit, and will provide a refund for the number of days you haven't used.
+
+
+	<?php //the_field('customer_notice'); ?>
