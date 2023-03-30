@@ -91,7 +91,7 @@ return $daily;
 }
 // 		dd($apiunit);
 		foreach($apiunit as $k => $u){
-						if($u["AvailableUnits"] == '0' && strpos($u["UnitTypeCode"], '*') !== false && $u["Height"] != '0') {
+						if($u["AvailableUnits"] == '0' && strpos($u["UnitTypeCode"], '^') !== false && $u["Height"] != '0') {
 // 							dd($u);
 							$u['UnavailableMode'] = true;
 							$u['AvailableUnits'] = '1';
@@ -264,54 +264,64 @@ return $daily;
 
 			<?php foreach($categories as $ck => $category):  ?>
 				<div id="<?php echo $category; ?>" <?php post_class('tab margin'); ?>>
-						<h2 class="title">
-							<?php echo $category; ?>
-						</h2>
-						<p class="size">
-							<?php
-								switch($category){
-									case "compact":
-										echo "12 - 24 square ft";
-										break;
-									case "small":
-										echo "25 - 74 square ft";
-										break;
-									case "medium":
-										echo "75 - 149 square ft";
-										break;
-									case "large":
-										echo "150 - 300+ square ft";
-										break;
-								}
-							?>
-						</p>
-					
-						<div class="tabs-wrap has-tooltip">
-				<div class="normal-tooltip">
-					<p>unit rental cost</p>
+					<div class="columns columns-2 bottom">
+						<div class="col col-1">
+							<h2 class="title">
+								<?php echo $category; ?>
+							</h2>
 
-					<div style="width:auto" class="tooltip">
-						You have the option to see unit rental costs monthly or daily. Monthly rent is the rent cost from the 1st day of the month to the last day of the month. Daily rent is the rate you would pay daily, calculated by dividing the total days in the month by the monthly rent value. All payments are made on the 1st of the month, payments cannot be made daily.
-					</div>
-				</div>
-					</div>
-					
-									<div class="tabs white toggle active">
+							<p class="size">
+								<?php
+									switch($category){
+										case "compact":
+											echo "12 - 24 square ft";
+											break;
+										case "small":
+											echo "25 - 74 square ft";
+											break;
+										case "medium":
+											echo "75 - 149 square ft";
+											break;
+										case "large":
+											echo "150 - 300+ square ft";
+											break;
+									}
+								?>
+							</p>
+						</div>
 
-										<ul class="horizontal">
-						<li class="monthlyMode">
-							<a class="monthlySwitch normal">
-								monthly
-							</a>
-						</li>
+						<div class="col col-2">
+							<div class="tooltip-wrap fixed-on-mobile">
+								<div class="tabs-wrap has-tooltip">
+									<div class="normal-tooltip">
+										<p>unit rental cost</p>
 
-						<li class="dailyMode">
-							<a class="dailySwitch normal">
-								daily
-							</a>
-						</li>
-					</ul>
-					</div>
+										<div class="tooltip">
+											You have the option to see unit rental costs monthly or daily. Monthly rent is the rent cost from the 1st day of the month to the last day of the month. Daily rent is the rate you would pay daily, calculated by dividing the total days in the month by the monthly rent value. All payments are made on the 1st of the month, payments cannot be made daily.
+										</div>
+									</div>
+								</div>
+
+								<div class="tabs white toggle active">
+									<ul class="horizontal max-210">
+										<li class="monthlyMode">
+											<a class="monthlySwitch normal">
+												monthly
+											</a>
+										</li>
+
+										<li class="dailyMode">
+											<a class="dailySwitch normal">
+												daily
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>		
+
+				
 
 				<div class="slider-units">
 					<?php foreach($master[$ck] as $unit):  ?>

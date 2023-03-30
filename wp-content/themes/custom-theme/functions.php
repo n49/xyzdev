@@ -392,7 +392,7 @@ function html5blank_conditional_scripts()
         ) , '1.0.1', true);
         wp_enqueue_script('rent_now');
     }
-    if (is_page_template('template-rent-now.php'))
+    if (is_page_template('template-rent-now.php') || is_page_template('template-customer-details.php'))
     {
         wp_register_script('clipboard', get_template_directory_uri() . '/js/clipboard.min.js', array(
             'jquery'

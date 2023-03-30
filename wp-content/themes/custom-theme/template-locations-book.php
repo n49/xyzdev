@@ -193,7 +193,7 @@ $API_KEY = 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpb
 </div>
 
 <div class="main-container">
-	<div class="wrapper overflow">
+	<div class="wrapper">
 		<?php get_template_part('loop-units'); ?>
 
 		<?php if(get_field('location_unit_notice', $parent)): ?>

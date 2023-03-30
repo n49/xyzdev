@@ -109,7 +109,7 @@
 				  display: none;
 				}
 			</style>
-			<div id="second" class="content-wrap overflow tab">
+			<div id="second" class="content-wrap tab">
 				<?php if(get_field('customer_content')): ?>
 					<div class="float-left section white">
 						<?php the_field('customer_content'); ?>
@@ -143,11 +143,13 @@
 				<?php endif; ?>
 
 				<div class="float-right grey">
-					<?php get_template_part('loop-units-single'); ?>
+					<?php get_template_part('loop-units-single-rental'); ?>
 				</div>
+
+				<div class="clear"></div>
 			</div>
 
-			<div id="third" class="content-wrap overflow tab">
+			<div id="third" class="content-wrap tab">
 				<?php if(get_field('customer_content_2')): ?>
 					<div class="float-left section white last">
 						<?php the_field('customer_content_2'); ?>
@@ -181,6 +183,8 @@
 				<div class="float-right grey">
 					<?php get_template_part('loop-units-single'); ?>
 				</div>
+
+				<div class="clear"></div>
 			</div>
 		</main>
 	</div>

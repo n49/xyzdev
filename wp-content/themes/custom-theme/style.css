@@ -7421,3 +7421,136 @@ a img.aligncenter {
 		page-break-after: avoid;
 	}
 }
+
+
+/* 2023-03-27 changes */
+
+.tabs-wrap.has-tooltip .normal-tooltip {
+	position: relative;
+	top: auto;
+	right: auto;
+	z-index: 99;
+}
+
+.tabs.white.toggle ul.horizontal {
+	max-width: 100%;
+	position: relative;
+	top: 0;
+}
+
+.tabs.white.toggle ul.horizontal.max-210 {
+	width: 210px;
+}
+
+.normal-tooltip .tooltip {
+	width: 700px;
+	max-width: 370px;
+	right: 8px;
+	transform: translate(50%, 0);
+}
+
+.form-section-wrap {
+	overflow: visible;
+}
+
+.columns.columns-2.bottom,
+.columns.columns-2.bottom .col {
+	margin-bottom: 0;
+}
+
+.columns.columns-2.bottom .col {
+	vertical-align: bottom;
+}
+
+.columns.columns-2.bottom .col p:last-child {
+	margin-bottom: 0;
+}
+
+.tooltip-wrap {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.tooltip-wrap .tabs-wrap.has-tooltip {
+	height: auto;
+	margin-right: 15px;
+}
+
+.tooltip-wrap .tabs.white.toggle {
+	width: 100%;
+	max-width: 210px;
+}
+
+.signature-wrap > .title-4{
+	background: #fff;
+	display: inline-block;
+	padding: 0 10px;
+	margin: -11px 0 10px -10px;
+}
+
+@media only screen and (max-width: 800px){
+	.tabs.white.toggle {
+		padding: 0;
+	}
+
+	.tooltip-wrap {
+		display: block;
+	}
+
+	.tooltip-wrap .tabs-wrap.has-tooltip {
+		margin: 0 0 10px;
+	}
+
+	.columns.columns-2.bottom {
+		margin-bottom: 20px;
+	}
+}
+
+@media only screen and (max-width: 640px){
+	.tabs .tab .tooltip-wrap {
+		display: none;
+	}
+
+	.tabs .tab:first-of-type .tooltip-wrap {
+		display: block;
+	}
+
+	.tooltip-wrap.fixed-on-mobile.stuck {
+		display: flex;
+		padding: 12px 20px;
+		position: fixed;
+		top: 80px;
+		background: #f1f1f1;
+		width: 100%;
+		left: 0;
+		z-index: 9999;
+		justify-content: space-between;
+		animation: fadeInDown ease-in-out 0.6s both;
+	}
+
+	.tooltip-wrap.fixed-on-mobile.stuck .tabs-wrap.has-tooltip {
+		margin: 0;
+	}
+
+	.tabs .tab:first-of-type .tooltip-wrap.fixed-on-mobile.stuck {
+		display: flex;
+	}
+
+	.tooltip-wrap.fixed-on-mobile.stuck .normal-tooltip .tooltip {
+		max-width: calc(100vw - 40px);
+		left: 0;
+		top: 35px;
+		bottom: auto;
+		transform: none;
+		right: auto;
+		margin: 0;
+	}
+
+	.tooltip-wrap.fixed-on-mobile.stuck .normal-tooltip .tooltip::before {
+		top: -8px;
+		bottom: auto;
+		left: 124px;
+		transform: none;
+	}
+}
