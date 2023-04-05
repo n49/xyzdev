@@ -5,64 +5,70 @@
         $class = 'last';
     } ?>
     <div class="rental-wrap <?php echo $class; ?>">
-        <?php if(get_field('rental_title')): ?>
-            <h2 class="title">
-                <?php the_field('rental_title'); ?>
-            </h2>
-        <?php endif; ?>
-
-        <div class="bgr">
-            <?php if( get_field('rental_image') ): ?>
-                <?php $image = get_field('rental_image'); ?>
-
-                <img class="overlap" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+        <div class="wrapper">
+            <?php if(get_field('rental_title')): ?>
+                <h2 class="title">
+                    <?php the_field('rental_title'); ?>
+                </h2>
             <?php endif; ?>
 
-            <div class="columns columns-2">
-                <div class="col">
-                    <?php if(get_field('rental_description_title')): ?>
-                        <h3 class="title">
-                            <?php if( get_field('rental_description_icon') ): ?>
-                                <?php $image = get_field('rental_description_icon'); ?>
+            <?php if(get_field('rental_content')): ?>
+                <?php the_field('rental_content'); ?>
+            <?php endif; ?>
 
-                                <span class="img-wrap">
-                                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+            <div class="bgr" style="margin-top: <?php the_field('rental_margin_top'); ?>px;">
+                <?php if( get_field('rental_image') ): ?>
+                    <?php $image = get_field('rental_image'); ?>
+
+                    <img class="overlap" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                <?php endif; ?>
+
+                <div class="columns columns-2">
+                    <div class="col">
+                        <?php if(get_field('rental_description_title')): ?>
+                            <h3 class="title">
+                                <?php if( get_field('rental_description_icon') ): ?>
+                                    <?php $image = get_field('rental_description_icon'); ?>
+
+                                    <span class="img-wrap">
+                                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                                    </span>
+                                <?php endif; ?>
+
+                                <span>
+                                    <?php the_field('rental_description_title'); ?>
                                 </span>
-                            <?php endif; ?>
+                            </h3>
+                        <?php endif; ?>
 
-                            <span>
-                                <?php the_field('rental_description_title'); ?>
-                            </span>
-                        </h3>
-                    <?php endif; ?>
+                        <?php the_field('rental_description_content'); ?>
 
-                    <?php the_field('rental_description_content'); ?>
+                        <?php if(get_field('rental_description_button_link')): ?>
+                            <a class="btn btn-white-2" href="<?php the_field('rental_description_button_link'); ?>">
+                                <?php the_field('rental_description_button_label'); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
 
-                    <?php if(get_field('rental_description_button_link')): ?>
-                        <a class="btn btn-white-2" href="<?php the_field('rental_description_button_link'); ?>">
-                            <?php the_field('rental_description_button_label'); ?>
-                        </a>
-                    <?php endif; ?>
-                </div>
+                    <div class="col">
+                        <?php if(get_field('rental_features_title')): ?>
+                            <h3 class="title">
+                                <?php if( get_field('rental_features_icon') ): ?>
+                                    <?php $image = get_field('rental_features_icon'); ?>
 
-                <div class="col">
-                    <?php if(get_field('rental_features_title')): ?>
-                        <h3 class="title">
-                            <?php if( get_field('rental_features_icon') ): ?>
-                                <?php $image = get_field('rental_features_icon'); ?>
+                                    <span class="img-wrap">
+                                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                                    </span>
+                                <?php endif; ?>
 
-                                <span class="img-wrap">
-                                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                                <span>
+                                    <?php the_field('rental_features_title'); ?>
                                 </span>
-                            <?php endif; ?>
+                            </h3>
+                        <?php endif; ?>
 
-                            <span>
-                                <?php the_field('rental_features_title'); ?>
-                            </span>
-                        </h3>
-                    <?php endif; ?>
-
-                    <?php the_field('rental_features_content'); ?>
+                        <?php the_field('rental_features_content'); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,13 +80,15 @@
         <div class="bgr">
             <div class="columns columns-2">
                 <div class="col">
-                    <?php the_field('rental_free_content'); ?>
+                    <div class="max-310">
+                        <?php the_field('rental_free_content'); ?>
 
-                    <?php if(get_field('rental_free_button_link')): ?>
-                        <a class="btn" href="<?php the_field('rental_free_button_link'); ?>">
-                            <?php the_field('rental_free_button_label'); ?>
-                        </a>
-                    <?php endif; ?>
+                        <?php if(get_field('rental_free_button_link')): ?>
+                            <a class="btn" href="<?php the_field('rental_free_button_link'); ?>">
+                                <?php the_field('rental_free_button_label'); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
 
                 <div class="col">

@@ -182,6 +182,32 @@ jQuery(document).ready(function($){
 		]
 	});
 
+	$('.carousel-5').slick({
+		infinite: false,
+		arrows: true,
+		appendArrows: '.carousel-5-nav',
+		dots: true,
+		appendDots: '.carousel-5-nav',
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+			{
+				breakpoint: 800,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1,
+				}
+			},
+			{
+				breakpoint: 540,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+				}
+			},
+		]
+	});
+
 	$('.carousel').slick({
 		infinite: true,
 		arrows: false,

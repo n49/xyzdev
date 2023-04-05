@@ -299,7 +299,7 @@ function html5blank_conditional_scripts()
 		wp_enqueue_script('bookUnit');
 	}
 
-    if (is_page_template('template-storage-2.php')) {
+    if (is_page_template('template-storage-2.php') || is_page_template('template-locations-subpage.php')) {
         wp_register_script('googlemapapi', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBkINJMV7xbxQzzefXijdLJKE7kGxsSgUo&extension=.js', array('jquery'), '1.0.0', true);
         wp_enqueue_script('googlemapapi');
 
@@ -372,7 +372,7 @@ function html5blank_styles()
 	wp_register_style('flatpickrcss', get_template_directory_uri() . '/css/flatpickr.css', array(), '4.6.6', 'all');
     wp_enqueue_style('flatpickrcss');
 
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0.16', 'all');
+    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0.17', 'all');
     wp_enqueue_style('html5blank');
 }
 

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Service
+Template Name: Subpage
 Template Post Type: locations
 */ get_header();
 
@@ -443,8 +443,6 @@ $curl = curl_init();
 		<main role="main" class="padding">
 			<?php get_template_part('loop-locations-dropdown'); ?>
 
-			<?php get_template_part('module-rental'); ?>
-
 			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class('overflow'); ?>>
 					<script>
@@ -469,126 +467,6 @@ $curl = curl_init();
 			<?php endif; ?>
 
 			<?php get_template_part('module-layout'); ?>
-
-			<?php if(get_field('location_service_left_content') || get_field('location_service_right_content')): ?>
-				<div class="section overflow">
-					<div class="columns columns-2 additional">
-						<?php if(get_field('location_service_left_content')): ?>
-							<div class="col">
-								<?php the_field('location_service_left_content'); ?>
-							</div>
-						<?php endif; ?>
-
-						<?php if(get_field('location_service_right_content')): ?>
-							<div class="col">
-								<?php the_field('location_service_right_content'); ?>
-							</div>
-						<?php endif; ?>
-					</div>
-				</div>
-			<?php endif; ?>
-
-			<?php if( have_rows('location_service_process') ): ?>
-				<div class="section">
-					<h2 class="title">
-						<?php _e('how it works', 'html5blank'); ?>
-					</h2>
-
-					<div class="columns columns-3 process">
-						<?php while( have_rows('location_service_process') ): the_row(); ?>
-							<div class="col">
-								<?php if( get_sub_field('location_service_process_image') ): ?>
-									<?php $image = get_sub_field('location_service_process_image'); ?>
-
-									<div class="img-wrap">
-										<img src="<?php echo $image['sizes']['small']; ?>" alt="<?php echo $image['alt']; ?>" />
-									</div>
-								<?php endif; ?>
-
-								<h3 class="title-4">
-									<?php the_sub_field('location_service_process_title'); ?>
-								</h3>
-
-								<p>
-									<?php the_sub_field('location_service_process_content'); ?>
-								</p>
-							</div>
-						<?php endwhile; ?>
-					</div>
-				</div>
-			<?php endif; ?>
-
-			<?php if( have_rows('location_service_prices') ): ?>
-				<div class="section">
-					<h2 class="title">
-						<?php _e('pricing', 'html5blank'); ?>
-					</h2>
-
-					<?php if(get_field('location_service_prices_description')): ?>
-						<div class="content">
-							<?php the_field('location_service_prices_description'); ?>
-						</div>
-					<?php endif; ?>
-
-					<div class="columns columns-2 flex prices">
-						<?php while( have_rows('location_service_prices') ): the_row(); ?>
-							<div class="col">
-								<h3 class="title">
-									<?php the_sub_field('location_service_prices_title'); ?>
-								</h3>
-
-								<?php if( have_rows('location_service_prices_price') ): ?>
-									<div class="cost">
-										<?php while( have_rows('location_service_prices_price') ): the_row(); ?>
-											<p>
-												<span class="num">
-													<?php the_sub_field('location_service_prices_price_cost'); ?>
-												</span>
-
-												<span>
-													<?php the_sub_field('location_service_prices_price_description'); ?>
-												</span>
-											</p>
-										<?php endwhile; ?>
-									</div>
-								<?php endif; ?>
-							</div>
-						<?php endwhile; ?>
-					</div>
-				</div>
-			<?php endif; ?>
-
-			<?php if(get_field('location_service_content')): ?>
-				<div class="section white">
-					<?php the_field('location_service_content'); ?>
-
-					<?php if( have_rows('location_service_features') ): ?>
-						<div class="columns columns-3 services bottom">
-							<?php while( have_rows('location_service_features') ): the_row(); ?>
-								<div class="col">
-									<?php if( get_sub_field('location_service_features_icon') ): ?>
-										<?php $image = get_sub_field('location_service_features_icon'); ?>
-
-										<div class="img-wrap">
-											<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-										</div>
-									<?php endif; ?>
-
-									<div class="content">
-										<p class="title-5">
-											<?php the_sub_field('location_service_features_title'); ?>
-										</p>
-
-										<p>
-											<?php the_sub_field('location_service_features_description'); ?>
-										</p>
-									</div>
-								</div>
-							<?php endwhile; ?>
-						</div>
-					<?php endif; ?>
-				</div>
-			<?php endif; ?>
 		</main>
 
 		<div class="sidebar">
@@ -599,140 +477,10 @@ $curl = curl_init();
 	</div>
 </div>
 
-<?php if(get_field('location_about_content')): ?>
-	<div id="about" class="about-section spacing has-shadow long" style="background-image: url('<?php the_field('location_about_background'); ?>');">
-		<div class="wrapper">
-			<div class="columns columns-3 custom">
-				<div class="col first">
-					<?php if(get_field('location_about_subtitle')): ?>
-						<p class="title-5 icon icon-arrow white">
-							<?php the_field('location_about_subtitle'); ?>
-						</p>
-					<?php endif; ?>
-
-					<?php the_field('location_about_content'); ?>
-				</div>
-
-				<?php if(get_field('location_about_content_2')): ?>
-					<div class="col second">
-						<?php the_field('location_about_content_2'); ?>
-					</div>
-				<?php endif; ?>
-
-				<?php if(get_field('location_about_content_3')): ?>
-					<div class="col third">
-						<?php the_field('location_about_content_3'); ?>
-					</div>
-				<?php endif; ?>
-
-				<?php if(have_rows('location_about_items')): ?>
-					<div class="col second wide">
-						<div class="columns columns-2 flex dark-grey products">
-							<?php while(have_rows('location_about_items')): the_row(); ?>
-								<div class="col">
-									<div class="content">
-										<?php if( get_sub_field('location_about_items_image') ): ?>
-											<?php $image = get_sub_field('location_about_items_image'); ?>
-
-											<div class="img-wrap transparent">
-												<img src="<?php echo $image['sizes']['small-2']; ?>" alt="<?php echo $image['alt']; ?>" />
-											</div>
-										<?php endif; ?>
-
-										<h3 class="title-4">
-											<?php the_sub_field('location_about_items_title'); ?>
-										</h3>
-
-										<?php if(get_sub_field('location_about_items_link')): ?>
-											<?php
-												$link = get_sub_field('location_about_items_link');
-												$link_url = $link['url'];
-												$link_title = $link['title'];
-												$link_target = $link['target'] ? $link['target'] : '_self';
-											?>
-
-											<a class="icon icon-link white" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
-										<?php endif; ?>
-									</div>
-								</div>
-							<?php endwhile; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-			</div>
-
-			<a class="btn-more normal" href="#">
-				<?php _e('read more', 'html5blank'); ?>
-			</a>
-		</div>
-	</div>
-<?php endif; ?>
-
-<?php if(get_field('reviews_content')): ?>
-	<?php if(get_field('reviews_layout') === 'columns'): ?>
-		<div class="reviews-section grey has-bgr-small narrow spacing">
-			<div class="wrapper overflow" style="background-image: url('<?php the_field('reviews_background'); ?>');">
-				<div class="title-wrap float-left">
-					<?php if(get_field('reviews_subtitle')): ?>
-						<p class="title-5 icon icon-arrow">
-							<?php the_field('reviews_subtitle'); ?>
-						</p>
-					<?php endif; ?>
-
-					<?php the_field('reviews_content'); ?>
-				</div>
-
-				<div class="content float-right">
-					<?php get_template_part('loop-reviews-2'); ?>
-				</div>
-			</div>
-		</div>
-	<?php endif; ?>
-<?php endif; ?>
-
-<?php if(get_field('reviews_layout') === 'fullwidth'): ?>
-	<?php get_template_part('loop-reviews-city'); ?>
-<?php endif; ?>
-
-<?php if(get_field('shop_title')): ?>
-	<div class="reviews-section shop-section spacing grey 1" style="background-image: url('<?php the_field('shop_background_image'); ?>');">
-		<div class="wrapper overflow">
-			<div class="title-wrap float-left">
-				<?php if(get_field('shop_subtitle')): ?>
-					<p class="title-5 icon icon-arrow">
-						<?php the_field('shop_subtitle'); ?>
-					</p>
-				<?php endif; ?>
-
-				<?php if(get_field('shop_title')): ?>
-					<h2 class="title">
-						<?php the_field('shop_title'); ?>
-					</h2>
-				<?php endif; ?>
-
-				<?php if(get_field('shop_button')): ?>
-					<?php
-						$link = get_field('shop_button');
-						$link_url = $link['url'];
-						$link_title = $link['title'];
-						$link_target = $link['target'] ? $link['target'] : '_self';
-					?>
-
-					<a class="btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-						<?php echo esc_html($link_title); ?>
-					</a>
-				<?php endif; ?>
-			</div>
-
-			<div class="content float-right">
-				<?php the_field('shop_content'); ?>
-			</div>
-		</div>
-	</div>
-<?php endif; ?>
-
 <?php get_template_part('module-cta'); ?>
 
 <?php get_template_part('loop-locations-services'); ?>
+
+<?php get_template_part('loop-locations-subpages'); ?>
 
 <?php get_footer(); ?>

@@ -24,7 +24,7 @@
             zoom		: zoom,
             center		: new google.maps.LatLng(0, 0),
             mapTypeId	: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: false,
+            scrollwheel: true,
             styles: [
                 {
                     "featureType": "all",

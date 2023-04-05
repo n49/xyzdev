@@ -11,7 +11,8 @@ if($post_name == "instagram-promotion" or
    $post_name == "all-canadian-self-storage-promotion" or
    $post_name == "downtownmail" or 
    $post_name == "thebridge" or 
-    $post_name == "ampli-rbc"
+   $post_name == "best-storage" or 
+   $post_name == "ampli-rbc"
   ) {
 	$this_location_name = "Toronto Downtown";
 }

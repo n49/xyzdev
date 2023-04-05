@@ -293,14 +293,14 @@ $API_KEY = 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpb
 
 							<?php if($num == 1) : ?>
 								<div class="img-wrap">
-									<a href="<?php echo $image['url']; ?>" data-sub-html="<?php echo $caption; ?>" title="<?php echo $image['alt']; ?>">
+									<a href="<?php echo $image['url']; ?>" data-html="<?php echo $image['alt']; ?>" data-sub-html="<?php echo $caption; ?>" title="<?php echo $image['alt']; ?>">
 										<img src="<?php echo $image['sizes']['medium-2']; ?>" alt="<?php echo $image['alt']; ?>" />
 
 										<span class="btn btn-grey"><?php _e('view all photos', 'html5blank'); ?></span>
 									</a>
 								</div>
 							<?php else: ?>
-								<a href="<?php echo $image['url']; ?>" data-sub-html="<?php echo $caption; ?>" title="<?php echo $image['alt']; ?>"></a>
+								<a href="<?php echo $image['url']; ?>" data-html="<?php echo $image['alt']; ?>" data-sub-html="<?php echo $caption; ?>" title="<?php echo $image['alt']; ?>"></a>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</div>
@@ -658,6 +658,8 @@ $API_KEY = 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpb
 	<?php get_template_part('module-faq'); ?>
 
 	<?php if(!$amp) get_template_part('loop-locations-services-parent'); ?>
+
+	<?php get_template_part('loop-locations-subpages-parent'); ?>
 
 	<?php get_template_part('loop-locations-single'); ?>
 
