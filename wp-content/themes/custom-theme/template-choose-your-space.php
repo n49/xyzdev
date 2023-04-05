@@ -98,23 +98,21 @@
 				</div>
 			</div>
 			
-					<div class="tabs white toggle active">
-					<ul class="horizontal">
-						<li class="monthlyMode">
-							<a class="monthlySwitch normal">
-								monthly
-							</a>
-						</li>
+			<div class="tabs white toggle active floating">
+				<ul class="horizontal">
+					<li class="monthlyMode">
+						<a class="monthlySwitch normal">
+							monthly
+						</a>
+					</li>
 
-						<li class="dailyMode">
-							<a class="dailySwitch normal">
-								daily
-							</a>
-						</li>
-
-						
-					</ul>
-				</div>
+					<li class="dailyMode">
+						<a class="dailySwitch normal">
+							daily
+						</a>
+					</li>				
+				</ul>
+			</div>
 
 			<div class="columns columns-3 flex prices has-btn mt-20">
 				<div class="col">

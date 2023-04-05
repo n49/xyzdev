@@ -113,7 +113,7 @@ $locations_street_address_array = array(
 	<span class="span-mod">rental</span> summary
 </h3>
 
-<div id="post-<?php the_ID(); ?>" class="columns units single last">
+<div id="post-<?php the_ID(); ?>" class="columns units single last" style="margin-bottom: 10px">
 	<div class="col">
 		<?php
 			$area = get_field_object('unit_area');
@@ -172,9 +172,14 @@ $locations_street_address_array = array(
 			</h3>
 
 			<p id="rentalDescriptionLabel">
-							<?php if($mode): ?>
+							<?php if(1==1): ?>
 
 				<?php _e('prorated monthly rent', 'html5blank'); ?>
+				<br class="showMobile" />
+				<span id="dateRangeRentalSummary" style="all:unset;">
+									<?php echo "from " . getCurrentMonthDate() . " - " . date('t'); ?>
+				</span>
+
 							<?php else: ?>
 
 				<?php _e('prorated monthly rent', 'html5blank'); ?>
@@ -184,13 +189,13 @@ $locations_street_address_array = array(
 
 				<span>$<span id="monthlyProRatedAmountS"><?php echo monthly_to_daily($proratedAmount); ?></span></span>
 											<?php else: ?>
-				<span>$<span id="monthlyProRatedAmountS"><?php echo $proratedAmount; ?></span></span>
+				<span>$<span id="monthlyProRatedAmount"><?php echo $proratedAmount; ?></span></span>
 			<?php endif; ?>
 
 			</p>
-				<span style="display:none">$<span style="display:none" id="monthlyProRatedAmount"><?php echo ($proratedAmount); ?></span></span>
+<!-- 				<span style="display:none">$<span style="display:none" id="monthlyProRatedAmount"><?php echo ($proratedAmount); ?></span></span> -->
 
- 			<p>
+<!--  			<p>
 				<?php _e('specials: ', 'html5blank'); ?> <br><span class="sale">
 				<span class="tester12323" style="all:unset; display:block"><?php _e('Takes effect  at first full month', 'html5blank'); ?></span>
 				<br style="display:none">
@@ -203,7 +208,7 @@ $locations_street_address_array = array(
 				<span>($<?php echo number_format(($price_edit/2), 2) ?>)</span>
 			<?php endif; ?>
 
-			</p> 
+			</p>  -->
 
 			<p>
 				<?php _e('deposit: ', 'html5blank'); ?>
@@ -247,10 +252,22 @@ $locations_street_address_array = array(
 
 			</p>
 		</div>
+		<div class="specials-applied">
+			 <p>
+				 <strong>specials applied:</strong>
+			</p>
+			<p class="specials-description">
+				<?php echo $_COOKIE["promoLabel"]?> (takes effect in the first full month) <br class="showMobile" />
+				Your <span style="all:unset" id="selectedMonthRentalSummary"> <?php echo date('F', strtotime('+1 month')) ?></span> rent will be <strong>$<?php echo number_format($_COOKIE["unitPrice"] * $_COOKIE["promo"], 2) ?></strong>, a savings of
+				<strong>$<?php echo number_format($_COOKIE["unitPrice"] - ($_COOKIE["unitPrice"] * $_COOKIE["promo"]), 2) ?></strong>.
+			</p>
+		</div>
 	</div>
 </div>
+<div>
+	
 
-XYZ Storage charges rent on the 1st of every month. The price shown above is your monthly rental price, prorated to the number of days in your first month of stay.  Leaving before the end of the month? No problem, we will prorate your rent once you have moved out of your unit, and will provide a refund for the number of days you haven't used.
-
+<strong>Note:</strong> XYZ Storage charges rent on the 1st of every month. The price shown above is your monthly rental price, prorated to the number of days in your first month of stay.  Leaving before the end of the month? No problem, we will prorate your rent once you have moved out of your unit, and will provide a refund for the number of days you haven't used.
+</div>
 
 	<?php //the_field('customer_notice'); ?>

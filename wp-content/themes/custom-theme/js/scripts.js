@@ -55,10 +55,12 @@ jQuery(document).ready(function($){
 		offset: -210
 	})
 
-	var stickyTooltip = new Waypoint.Sticky({
-		element: $('.fixed-on-mobile')[0],
-		offset: 0
-	})
+	if ($('.fixed-on-mobile').length) {
+		var stickyTooltip = new Waypoint.Sticky({
+			element: $('.fixed-on-mobile')[0],
+			offset: 0
+		})
+	}
 
 	/* ScrollUp Button */
 

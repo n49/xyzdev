@@ -33,6 +33,20 @@ body #upgrade_btn {
 	background: #000 !important;
 }
 
+.showMobile {
+		display: block !important;
+	}
+.specials-applied {
+	padding-top: 10px;
+	border-top: 1px solid #54565a;
+/* 	border-bottom: 1px solid #54565a; */
+}
+
+.specials-description {
+	color: #ec6300;
+	margin-bottom: 0px !important;
+}
+
 /* Hubspot */
 
 .hbspt-form form fieldset.form-columns-1,
@@ -5830,6 +5844,7 @@ span.wpcf7-not-valid-tip {
 \*------------------------------------*/
 
 @media only screen and (min-width: 960px) {
+
 	.fancybox-wrap {
 		width: 100% !important;
 		max-width: 800px;
@@ -7442,6 +7457,12 @@ a img.aligncenter {
 	width: 210px;
 }
 
+.tabs.white.toggle.floating ul.horizontal {
+	max-width: 210px;
+	position: absolute;
+	top: -70px;
+}
+
 .normal-tooltip .tooltip {
 	width: 700px;
 	max-width: 370px;
@@ -7552,5 +7573,12 @@ a img.aligncenter {
 		bottom: auto;
 		left: 124px;
 		transform: none;
+	}
+
+	.tabs.white.toggle.floating ul.horizontal {
+		max-width: 100%;
+		position: relative;
+		top: 0;
+		margin: 10px 0 0;
 	}
 }

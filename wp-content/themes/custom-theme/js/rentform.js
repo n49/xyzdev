@@ -1,4 +1,11 @@
 jQuery(document).ready(function($){
+	function getCookie(name) {
+    function escape(s) { return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1'); }
+    var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+    return match ? match[1] : null;
+}
+			var priceMode = getCookie('priceMode');
+
 	//console.log('party on the floor');
 	/* Form Buttons */
 	$('.wpcf7-form').on('wpcf7cf_change_step', function(e, previousStep, currentStep) {
@@ -10,11 +17,31 @@ jQuery(document).ready(function($){
 		$('.form-section-wrap .tabs-fake ul.horizontal li').removeClass('active done');
 		console.log('what is active', active);
 		if(active === 'form-active-2'){
+					if(priceMode == 'daily') {
+			$('.dailyMode').addClass('active');
+			$('.monthlyMode').removeClass('active');
+					}
+					if(priceMode == 'monthly') {
+			$('.dailyMode').removeClass('active');
+			$('.monthlyMode').addClass('active');
+					}
+
+			console.log('FIRING THE STEP1 EVENT');
 			$('.form-section-wrap .tabs-fake ul.horizontal li.first').addClass('done');
 			$('.form-section-wrap .tabs-fake ul.horizontal li.second').addClass('active');
 		}
 
 		if(active === 'form-active-3'){
+						if(priceMode == 'daily') {
+			$('.dailyMode').addClass('active');
+			$('.monthlyMode').removeClass('active');
+					}
+					if(priceMode == 'monthly') {
+			$('.dailyMode').removeClass('active');
+			$('.monthlyMode').addClass('active');
+					}
+						console.log('FIRING THE STEP2 EVENT');
+
 			$('.form-section-wrap .tabs-fake ul.horizontal li.first, .form-section-wrap .tabs-fake ul.horizontal li.second').addClass('done');
 			$('.form-section-wrap .tabs-fake ul.horizontal li.third').addClass('active');
 		}
@@ -24,20 +51,20 @@ jQuery(document).ready(function($){
 
 	$form = $('.wpcf7-form');
 
-	$('.multiform-steps .first').click(function(e){
-		e.preventDefault();
-		wpcf7cf.multistepMoveToStep($form, 1);
-	});
+// 	$('.multiform-steps .first').click(function(e){
+// 		e.preventDefault();
+// 		wpcf7cf.multistepMoveToStep($form, 1);
+// 	});
 
-	$('.multiform-steps .second').click(function(e){
-		e.preventDefault();
-		wpcf7cf.multistepMoveToStep($form, 2);
-	});
+// 	$('.multiform-steps .second').click(function(e){
+// 		e.preventDefault();
+// 		wpcf7cf.multistepMoveToStep($form, 2);
+// 	});
 
-	$('.multiform-steps .third').click(function(e){
-		e.preventDefault();
-		wpcf7cf.multistepMoveToStep($form, 3);
-	});
+// 	$('.multiform-steps .third').click(function(e){
+// 		e.preventDefault();
+// 		wpcf7cf.multistepMoveToStep($form, 3);
+// 	});
 
 	/* Add slash to card expiry field */
 

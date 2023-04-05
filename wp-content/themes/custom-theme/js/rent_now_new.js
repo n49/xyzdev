@@ -159,8 +159,28 @@ var insurances = JSON.parse(getCookie("InsuranceSchemes"));
 		var daysRemaining = getDaysRemainingInMonth(moveInDate);
 		var newProRatedAmount = dailyRent * daysRemaining;
 		console.log('check this out', newProRatedAmount, insurancePrice);
+		var dateRange = document.getElementById('dateRangeRentalSummary');
+		var summaryText = document.getElementById('selectedMonthRentalSummary');
+		// get the date number from moveInDate
+var _dateNumber = parseInt(moveInDate.split('-')[2]);
+
+// get the number of days from the month in moveInDate
+var _daysInMonth = new Date(moveInDate.split('-')[0], moveInDate.split('-')[1], 0).getDate();
+
+// get the month name from moveInDate
+var _monthName = new Date(moveInDate.split('-')[0], moveInDate.split('-')[1], 0).toLocaleString('default', { month: 'long' });
+			var nextMonth = function(monthLabel) {
+    var months = ["Janurary", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var nextMonth = months[(months.indexOf(monthLabel) + 1) % months.length];
+    return nextMonth;
+    };
+		// get the next month name from moveInDate
+var nextMonthName = nextMonth(_monthName);
+		dateRange.innerText = "from " + _monthName + " " + _dateNumber + " - " + _daysInMonth;  
+		summaryText.innerText = nextMonthName;
+			
 		var proRatedAmount = document.getElementById('monthlyProRatedAmount');
-			proRatedAmount.innerText = parseFloat(newProRatedAmount).toFixed(2);
+		proRatedAmount.innerText = parseFloat(newProRatedAmount).toFixed(2);
 		var salesTaxText = document.getElementById('salesTaxText');
 		var totalText = document.getElementById('totalCreditCardAmount');
 		

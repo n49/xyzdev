@@ -10,6 +10,13 @@
 /*------------------------------------*\
 	Theme Support
 \*------------------------------------*/
+
+function getCurrentMonthDate() {
+	$month = date('F');
+$day = date('j');
+return $month . " " . $day;
+}
+
 add_filter('wpcf7_validate', 'send_ga_events', 20, 2);
 
 // add_action('wpcf7cf_validate_step', 'send_ga_events');
@@ -39,6 +46,125 @@ function sendEvent($category, $action, $label)
     
 }
 
+
+function updateSheets($key) {
+// 	var_dump('show me', get_current_user_id());
+	    $API_KEY = 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjU3MmE0NDI3NDdhYjg5YzkzYzE0MzVlNV9UVG55Z2E0NEBvcC5pbyIsInVzZXJfbWV0YWRhdGEiOnsiX2lkIjoiajJnZWdwYzhzZnd3Y2NzYWcifSwiaXNzIjoiaHR0cHM6Ly9vcC5pby8iLCJzdWIiOiJhcGlrZXl8ajJnZWdwYzhzZnd3Y2NzYWciLCJhdWQiOiJobTNsZmlvUHAwVWhqQnNkV0V6MG9nTW9zVVNDV2p3SCIsImV4cCI6MjE0NTkxNjgwMCwiaWF0IjoxNDk0MjY0NDM1LCJyZXNvdXJjZXMiOlt7InJvdXRlIjoiZW50aXRpZXMifSx7InJvdXRlIjoicHJvcGVydGllcyIsInF1ZXJ5IjpbbnVsbF19XX0.IGrh8vnO1o9SLfmhuEzPNSkiLYhsxcIvti9Pq-9N65s';
+
+$sheetID = "1bzsO0PpSwKswfwcKRfbe72yms0NMajlDfMl-dxA23R0";
+	
+	$postFields = json_encode(
+		array(
+			"sheetId" => $sheetID,
+			"sheetTitle"=> "Rent now TEST",
+			"id" => $_COOKIE["PHPSESSID"], 
+			"key" => $key
+		)
+	);
+// 	var_dump('see here', $postFields);
+// 	return;
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://op.io/api/entities/sheetStuff",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+CURLOPT_HTTPHEADER => [
+    $API_KEY,
+    "Content-Type: application/json",
+  ],  CURLOPT_CUSTOMREQUEST => "PUT",
+  CURLOPT_POSTFIELDS => $postFields,
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  return "cURL Error #:" . $err;
+} else {
+  return $response;
+}
+}
+
+function writeToSheets() {
+// 	var_dump('show me', get_current_user_id());
+	    $API_KEY = 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjU3MmE0NDI3NDdhYjg5YzkzYzE0MzVlNV9UVG55Z2E0NEBvcC5pbyIsInVzZXJfbWV0YWRhdGEiOnsiX2lkIjoiajJnZWdwYzhzZnd3Y2NzYWcifSwiaXNzIjoiaHR0cHM6Ly9vcC5pby8iLCJzdWIiOiJhcGlrZXl8ajJnZWdwYzhzZnd3Y2NzYWciLCJhdWQiOiJobTNsZmlvUHAwVWhqQnNkV0V6MG9nTW9zVVNDV2p3SCIsImV4cCI6MjE0NTkxNjgwMCwiaWF0IjoxNDk0MjY0NDM1LCJyZXNvdXJjZXMiOlt7InJvdXRlIjoiZW50aXRpZXMifSx7InJvdXRlIjoicHJvcGVydGllcyIsInF1ZXJ5IjpbbnVsbF19XX0.IGrh8vnO1o9SLfmhuEzPNSkiLYhsxcIvti9Pq-9N65s';
+
+$sheetID = "1bzsO0PpSwKswfwcKRfbe72yms0NMajlDfMl-dxA23R0";
+	
+            $locations = array(
+                3 => 'Toronto West',
+                4 => 'Etobicoke',
+                1 => 'Scarborough',
+                2 => 'Mississauga',
+                5 => 'Mobile',
+                6 => 'Toronto Midtown',
+                7 => 'Toronto Downtown'
+            );
+            $location = $locations[intval($_COOKIE['unitLocation'])];
+	$postFields = json_encode(
+		array(
+			"sheetId" => $sheetID,
+			"sheetTitle"=> "Rent now TEST",
+			"items"=> array(
+				"submission-date" => date("Y-m-d"), 
+				"submission-time" => date("H:i:s"),
+				"phone"=> $_POST['phone'],
+				"first-name" => $_POST['first-name'],
+				"last-name" => $_POST["last-name"],
+				"email" => $_POST["email"],	
+				"unit-location" => $location, 
+				"unit-size" => $_COOKIE["unitDimensions"],
+				"unit-price" => $_COOKIE["unitPrice"],
+				"promo-label" => $_COOKIE["promoLabel"],
+				"consent" => $_POST["_mc4wp_subscribe_contact-form-7"],
+				"utm-campaign" => $_COOKIE["utm_campaign"],
+				"referrer" => $_COOKIE["referrer_url"],
+				"bvp-selection" => $_COOKIE["selectedSpace"] ?? "N/A Only one unit available",
+				"utm-medium" => $_COOKIE["utm_medium"],
+				"utm-source" => $_COOKIE["utm_source"],
+				"utm-term" => $_COOKIE["utm_term"],
+				"step2-completed" => false,
+				"rental-completed" => false,
+				"php_session_id" => $_COOKIE["PHPSESSID"]
+			),
+		)
+	);
+// 	var_dump('see here', $postFields);
+// 	return;
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://op.io/api/entities/sheetStuff",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+CURLOPT_HTTPHEADER => [
+    $API_KEY,
+    "Content-Type: application/json",
+  ],  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => $postFields,
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  return "cURL Error #:" . $err;
+} else {
+  return $response;
+}
+}
+
 function send_ga_events($result, $tag)
 {
     // 	    $tag = new WPCF7_Shortcode( $tag );
@@ -50,17 +176,24 @@ function send_ga_events($result, $tag)
     //
     if ($currentStep == 1 && !$hasInvalidField)
     {
-        // 		var_dump('sending yes');
+		
+// 		$res = writeToSheets();
+		
+		
+//         		var_dump('sending yes', $res);
         sendEvent("RentNow_Step_1", "success", "step1submission");
     }
     if ($currentStep == 2 && !$hasInvalidField)
     {
+// 		updateSheets("step2-completed");
         // 		var_dump('sending yes');
         sendEvent("RentNow_Step_2", "success", "step2submission");
     }
 
     if ($currentStep == 3 && !$hasInvalidField)
     {
+// 				updateSheets("rental-completed");
+
         // 		var_dump('sending yes');
         sendEvent("Rental_Complete", "success", "rentalcompletion");
     }

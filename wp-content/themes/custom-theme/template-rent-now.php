@@ -4,6 +4,9 @@
 
 <?php /* Template Name: Rent Now */ get_header();
 // var_dump($_COOKIE['unitLocation']);
+if(!$_COOKIE['unitLocation']) {
+	wp_redirect('/');
+}
 add_filter("wpcf7_form_tag", function($scanned_tag, $replace){
 
 
@@ -134,7 +137,7 @@ foreach($insSchemes as $ins) {
 
 			<ul class="horizontal icons has-event multiform-steps">
 				<li class="first active">
-					<a class="normal inactive form-btn-1" href="#first">
+					<a class="normal inactive form-btn-1">
 						<p class="title-5">
 							<?php _e('customer details', 'html5blank'); ?>
 						</p>
@@ -144,7 +147,7 @@ foreach($insSchemes as $ins) {
 				<li class="second">
 					<span class="icon sep"></span>
 
-					<a class="normal inactive" href="#second">
+					<a class="normal inactive">
 						<p class="title-5">
 							<?php _e('rental details', 'html5blank'); ?>
 						</p>
@@ -154,7 +157,7 @@ foreach($insSchemes as $ins) {
 				<li class="third">
 					<span class="icon sep"></span>
 
-					<a class="normal inactive" href="#third">
+					<a class="normal inactive">
 						<p class="title-5">
 							<?php _e('complete rental', 'html5blank'); ?>
 						</p>
