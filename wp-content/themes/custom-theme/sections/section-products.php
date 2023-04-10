@@ -31,14 +31,33 @@
 				<div class="col second wide">
 					<div class="columns columns-2 flex white products">
 						<?php while(have_rows('items')): the_row(); ?>
+							<?php if(get_sub_field('items_link')): ?>
+								<?php
+									$link = get_sub_field('items_link');
+									$link_url = $link['url'];
+									$link_title = $link['title'];
+									$link_target = $link['target'] ? $link['target'] : '_self';
+								?>
+							<?php endif; ?>
+
 							<div class="col">
 								<div class="content">
 									<?php if( get_sub_field('items_image') ): ?>
 										<?php $image = get_sub_field('items_image'); ?>
 
-										<div class="img-wrap transparent">
+										<?php if(get_sub_field('items_link')): ?>
+											<a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+										<?php else: ?>
+											<div class="img-wrap transparent">
+										<?php endif; ?>
+
 											<img src="<?php echo $image['sizes']['small-2']; ?>" alt="<?php echo $image['alt']; ?>" />
-										</div>
+
+										<?php if(get_sub_field('items_link')): ?>
+											</a>
+										<?php else: ?>
+											</div>
+										<?php endif; ?>
 									<?php endif; ?>
 
 									<h3 class="title-4">
@@ -46,13 +65,6 @@
 									</h3>
 
 									<?php if(get_sub_field('items_link')): ?>
-										<?php
-											$link = get_sub_field('items_link');
-											$link_url = $link['url'];
-											$link_title = $link['title'];
-											$link_target = $link['target'] ? $link['target'] : '_self';
-										?>
-
 										<a class="icon icon-link" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
 									<?php endif; ?>
 								</div>

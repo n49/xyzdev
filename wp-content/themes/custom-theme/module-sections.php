@@ -6,6 +6,7 @@
 			<?php get_template_part('sections/section-content'); ?>
 		<?php elseif( get_row_layout() == 'reviews'): ?>
 			<?php get_template_part('sections/section-reviews'); ?>
+			<?php // if(!$amp) get_template_part('loop-reviews'); ?>
 		<?php elseif( get_row_layout() == 'locations'): ?>
 			<?php get_template_part('sections/section-locations'); ?>
 		<?php elseif( get_row_layout() == 'locations-custom'): ?>

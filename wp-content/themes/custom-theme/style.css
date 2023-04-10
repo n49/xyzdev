@@ -7984,12 +7984,14 @@ p:last-child {
 
 .header-wrap.has-image .logos a,
 .header-wrap.has-image .logos picture,
+.header-wrap.has-image .logos > a > img,
 .header-wrap.has-image .logos iframe {
 	display: inline-block;
 	vertical-align: middle;
 }
 
 .header-wrap.has-image .logos picture,
+.header-wrap.has-image .logos > a > img,
 .header-wrap.has-image .logos iframe {
 	margin: 0 20px 0 0;
 }
@@ -8440,6 +8442,7 @@ p:last-child {
 	}
 
 	.header-wrap.has-image .logos picture,
+	.header-wrap.has-image .logos > a > img,
 	.header-wrap.has-image .logos iframe {
 		margin: 0 20px 20px 0;
 	}

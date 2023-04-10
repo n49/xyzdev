@@ -7,7 +7,7 @@
 		</div>
 
 		<div class="content float-right">
-			<?php get_template_part('loop-reviews-2'); ?>
+			<?php if(!$amp) get_template_part('loop-reviews-general'); ?>
 		</div>
 	</div>
 </div>
