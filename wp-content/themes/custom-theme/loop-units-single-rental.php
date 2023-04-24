@@ -90,7 +90,7 @@ $locations_street_address_array = array(
 					</div>
 				</div>
 					</div>
-		<div style="float:right; width: 50%" class="tabs white toggle active">
+		<div style="float:right; width: 50%; cursor: pointer" class="tabs white toggle active">
 					<ul style="position:relative; top:0px" class="horizontal">
 						<li class="monthlyMode">
 							<a class="monthlySwitch normal">

@@ -98,7 +98,7 @@
 				</div>
 			</div>
 			
-			<div class="tabs white toggle active floating">
+			<div style="cursor:pointer" class="tabs white toggle active floating">
 				<ul class="horizontal">
 					<li class="monthlyMode">
 						<a class="monthlySwitch normal">

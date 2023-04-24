@@ -2183,10 +2183,6 @@ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 
     // call bambora first
     //$passedNotes = makeNoteRequest('testnote', $location_id, 4569);
-    //var_dump('notes', $passedNotes);
-    
-
-    //return;
     //var_dump('werwerwe',$_COOKIE);
     $curl = curl_init();
     $endpoint = 'http://ssm20.selfstoragemanager.net/XYZStorageAPI/service.asmx/';
@@ -2194,6 +2190,24 @@ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     $CUSTOMER_PASS = '191820120406';
 
 
+	$check_profile_params = array(
+	    'strCustomerCode' => $CUSTOMER_CODE,
+        'strCustomerPassword' => $CUSTOMER_PASS,
+        'strTenantEmailId' => $email
+	);
+	
+	$checkProfileUrl = $endpoint . "GetTenantDetailsByEmail" . '?' . http_build_query($check_profile_params);
+    $profileRequestSSM = makeRequest($checkProfileUrl);
+	$existingTenantID = false;
+	$tenantID = false;
+// 	var_dump($profileRequestSSM);
+	if(isset($profileRequestSSM["GetTenantDetailsByEmail"])) {
+		$existingTenant = true;
+		$existingTenantID = $profileRequestSSM["GetTenantDetailsByEmail"][0]["TenantID"];
+	}
+// 	var_dump($existingTenant);
+	
+// 	return;
 
     $trans_params = array(
         'strCustomerCode' => $CUSTOMER_CODE,
@@ -2414,9 +2428,16 @@ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
         'strCCAuthorizationCode' => $ccAuthorizationCode,
         'strPaymentAccountId' => $paymentAccountId ? $paymentAccountId : ''
     );
-    // 	var_dump('params', $params);
-    // 	return;
-    $rentUrl = $endpoint . "SubmitOnlineRentalForNewTenants_TD" . '?' . http_build_query($params);
+	if($existingTenant) {
+		$addTenant = array(
+			'strTenantID' => $existingTenantID
+		);
+		$params = array_merge($params, $addTenant);
+		$rentUrl = $endpoint . "CreateNewRentalForExistingTenant" . '?' . http_build_query($params);
+	}
+	else {
+		$rentUrl = $endpoint . "SubmitOnlineRentalForNewTenants_TD" . '?' . http_build_query($params);
+	}
     try
     {
         $rentalId = makeRequest($rentUrl, true);

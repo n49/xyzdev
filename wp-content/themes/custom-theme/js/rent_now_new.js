@@ -441,7 +441,7 @@ $(".wpcf7-response-output").text(response.message);
 
 	  }
 	});
-	xhr.open("POST", `https://www.xyzstorage.com/wp-json/myplugin/v1/rentNowSSM`);
+	xhr.open("POST", `https://dev4.xyz.pop.ca/wp-json/myplugin/v1/rentNowSSM`);
 
 	xhr.send(data);
 

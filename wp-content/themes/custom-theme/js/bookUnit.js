@@ -102,7 +102,7 @@ var op = Number(discountedRent) * 2;
 		let url = "/customer-details";
 		
 		if(parseInt(data.unavailmode) == 1) {
-			url = '/customer-details-unavailable-units-alternate-reservation/';
+			url = '/customer-details-unavailable-reservation/';
 		}
 
 
@@ -142,7 +142,7 @@ var op = Number(discountedRent) * 2;
 		var url = "/choose-your-space";
 
 		if(parseInt(data.unavailmode) == 1) {
-			url = '/rent-now-unavailable-units-alternate-rental/';
+			url = '/rent-now-unavailable-rental/';
 		}
 		Object.keys(cookieData).forEach(key => {
 			setCookie(key, cookieData[key], url)

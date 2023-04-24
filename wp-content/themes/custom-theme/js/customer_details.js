@@ -24,8 +24,9 @@ jQuery(document).ready(function($){
 
   var utm = getUTM();
     $('.fake-btn').click(function(){
+	  allowClick(false);
       console.log("fake button clicked")
-      if(canClick){
+      if(1==1){
         if(!validateFields()){
           console.log("failed validation")
           $('.real-btn').click();

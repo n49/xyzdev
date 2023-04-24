@@ -47,9 +47,411 @@ jQuery(document).ready(function($){
   if ( '249' == event.detail.contactFormId ) {
     gtag('event', 'Truck ' + locationName);
   }
+	if('46069' == event.detail.contactFormId) {
+	   unavailable_reservation_form(locationName);
+	}
+	if('46075' == event.detail.contactFormId) {
+	   unavailable_rent_now_form(locationName);
+	}
 }, false );
 	
+	function unavailable_reservation_form(locationName) {
+	const pageUrl = window.location.href; 
+	var date = new Date();
+	const yyyy = date.getFullYear();
+	let mm = date.getMonth() + 1; // Months start at 0!
+	if (mm < '10') {
+		mm = '0' + mm;
+	}
+	let dd = date.getDate();
+	if (dd < '10') {
+		dd = '0' + dd;
+	}
+	var formatted_today = yyyy + '-' + mm + '-' + dd;
 
+    var purpose_chosen = document.getElementById('purpose').value;
+    var terms_and_condition = document.getElementById('reservation-checkbox').checked === true ? 'Yes' : 'No';
+
+	var hubSpotCookie = getCookieM('hubspotutk');
+	var utm_campaign = getCookieM('utm_campaign');
+	var utm_medium = getCookieM('utm_medium');
+	var utm_source = getCookieM('utm_source');
+	var utm_term = getCookieM('utm_term');
+	var referrer_url = getCookieM('referrer_url');
+
+	var unit_location = locationName;
+	var unit_size = getCookieM('unitDimensions');
+	var unit_rent = getCookieM('unitRent');
+	var discount = '0';
+
+	var marketing_source = 'Reservation - unavailable unit';
+	var funnel_status = 'Reserved';
+	var source_of_inquiry = 'Forms';
+
+	console.log('utm_campaign', utm_campaign);
+	console.log('utm_medium', utm_medium);
+	console.log('utm_source', utm_source);
+	console.log('utm_term', utm_term);
+	console.log('referrer_url', referrer_url);
+
+	console.log('unit_location', unit_location);
+	console.log('unit_size', unit_size);
+	console.log('unit_rent', unit_rent);
+	console.log('discount', discount);
+
+	console.log('marketing_source', marketing_source);
+	console.log('funnel_status', funnel_status);
+	console.log('source_of_inquiry', source_of_inquiry);
+
+	var hubSpotData = {
+		"submittedAt": Date.now(),
+		"fields": [
+			{
+				"objectTypeId": "0-1",
+				"name": "firstname",
+				"value": document.getElementById("first-name").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "lastname",
+				"value": document.getElementById("last-name").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "email",
+				"value": document.getElementById("your-email").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "mobilephone",
+				"value": document.getElementById("phone").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "tentative_move_in_date",
+				"value": document.getElementById("date").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "purpose_of_your_storage_used",
+				"value": purpose_chosen ? purpose_chosen : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "company",
+				"value": purpose_chosen === 'Business' ? document.getElementById("business-name").value : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "tentative_move_in_location",
+				"value": unit_location
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "unit_size",
+				"value": unit_size
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "reservation_rent",
+				"value": unit_rent
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "marketing_source",
+				"value": marketing_source
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "last_submitted_date",
+				"value": formatted_today
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "reservation_form_submission_date",
+				"value": formatted_today
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "source_of_inquiry",
+				"value": source_of_inquiry
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "wp__funnel_status",
+				"value": funnel_status
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_campaign",
+				"value": utm_campaign ? utm_campaign : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_medium",
+				"value": utm_medium ? utm_medium : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_source",
+				"value": utm_source ? utm_source : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_term",
+				"value": utm_term ? utm_term : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "referrer",
+				"value": referrer_url ? referrer_url : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "details",
+				"value":  document.getElementById("your-message").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "terms_and_condition",
+				"value": terms_and_condition ? terms_and_condition : 'No'
+			}
+
+		],
+		"context": {
+			"hutk": hubSpotCookie,
+			"pageUri": pageUrl,
+			"pageName": "XYZ Storage - Customer details"
+		}
+	};
+
+	$.ajax({
+		url: "https://api.hsforms.com/submissions/v3/integration/submit/21102818/0d65876c-80dd-4e71-968f-b77fba3e0686",
+		type: "post",
+		contentType: "application/json",
+		data: JSON.stringify({
+			fields: hubSpotData.fields,
+			context: hubSpotData.context
+		}),
+		success: function (response) {
+			console.log('success', response);
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log('check for error', jqXHR.responseJSON);
+			// var gotError = JSON.stringify(jqXHR.responseJSON.errors);
+			// var email_url = `https://xyzstorage.com/wp-json/myplugin/v1/hubspotemail2?errorMessage=${gotError}`;
+			// // send error email
+			// $.ajax({
+			// 	url: email_url,
+			// 	success: function (result) {
+			// 		document.cookie = "snp_snppopup-exit=1";
+
+			// 	}
+			// });
+			// console.log(textStatus, errorThrown);
+		}
+	});
+	return true;
+}
+
+	function unavailable_rent_now_form(locationName) {
+	const pageUrl = window.location.href; 
+	var date = new Date();
+	const yyyy = date.getFullYear();
+	let mm = date.getMonth() + 1; // Months start at 0!
+	if (mm < '10') {
+		mm = '0' + mm;
+	}
+	let dd = date.getDate();
+	if (dd < '10') {
+		dd = '0' + dd;
+	}
+	var formatted_today = yyyy + '-' + mm + '-' + dd;
+
+    var purpose_chosen = document.getElementById('purpose').value;
+	var terms_and_condition = document.getElementById('rental-checkbox').checked === true ? 'Yes' : 'No';
+
+	var hubSpotCookie = getCookieM('hubspotutk');
+	var utm_campaign = getCookieM('utm_campaign');
+	var utm_medium = getCookieM('utm_medium');
+	var utm_source = getCookieM('utm_source');
+	var utm_term = getCookieM('utm_term');
+	var referrer_url = getCookieM('referrer_url');
+
+	var unit_location = locationName;
+	var unit_size = getCookieM('unitDimensions');
+	var unit_rent = getCookieM('unitRent');
+	var discount = '0';
+
+	var marketing_source = 'Rent now - unavailable unit';
+	var funnel_status = 'Rented';
+	var source_of_inquiry = 'Forms';
+
+	console.log('utm_campaign', utm_campaign);
+	console.log('utm_medium', utm_medium);
+	console.log('utm_source', utm_source);
+	console.log('utm_term', utm_term);
+	console.log('referrer_url', referrer_url);
+
+	console.log('unit_location', unit_location);
+	console.log('unit_size', unit_size);
+	console.log('unit_rent', unit_rent);
+	console.log('discount', discount);
+
+	console.log('marketing_source', marketing_source);
+	console.log('funnel_status', funnel_status);
+	console.log('source_of_inquiry', source_of_inquiry);
+
+	var hubSpotData = {
+		"submittedAt": Date.now(),
+		"fields": [
+			{
+				"objectTypeId": "0-1",
+				"name": "firstname",
+				"value": document.getElementById("first-name").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "lastname",
+				"value": document.getElementById("last-name").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "email",
+				"value": document.getElementById("your-email").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "mobilephone",
+				"value": document.getElementById("phone").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "move_in_date",
+				"value": document.getElementById("date").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "purpose_of_your_storage_used",
+				"value": purpose_chosen ? purpose_chosen : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "company",
+				"value": purpose_chosen === 'Business' ? document.getElementById("business-name").value : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "location",
+				"value": unit_location
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "unit_size",
+				"value": unit_size
+			},
+			// {
+			// 	"objectTypeId": "0-1",
+			// 	"name": "reservation_rent",
+			// 	"value": unit_rent
+			// },
+			{
+				"objectTypeId": "0-1",
+				"name": "marketing_source",
+				"value": marketing_source
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "last_submitted_date",
+				"value": formatted_today
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "rental_form_submission_date",
+				"value": formatted_today
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "source_of_inquiry",
+				"value": source_of_inquiry
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "wp__funnel_status",
+				"value": funnel_status
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_campaign",
+				"value": utm_campaign ? utm_campaign : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_medium",
+				"value": utm_medium ? utm_medium : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_source",
+				"value": utm_source ? utm_source : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "utm_term",
+				"value": utm_term ? utm_term : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "referrer",
+				"value": referrer_url ? referrer_url : ''
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "details",
+				"value":  document.getElementById("your-message").value
+			},
+			{
+				"objectTypeId": "0-1",
+				"name": "terms_and_condition",
+				"value": terms_and_condition ? terms_and_condition : 'No'
+			}
+
+		],
+		"context": {
+			"hutk": hubSpotCookie,
+			"pageUri": pageUrl,
+			"pageName": "XYZ Storage - Customer details"
+		}
+	};
+
+	$.ajax({
+		url: "https://api.hsforms.com/submissions/v3/integration/submit/21102818/a7871728-3bc6-4182-8b07-f69b300f87f6",
+		type: "post",
+		contentType: "application/json",
+		data: JSON.stringify({
+			fields: hubSpotData.fields,
+			context: hubSpotData.context
+		}),
+		success: function (response) {
+			console.log('success', response);
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log('check for error', jqXHR.responseJSON);
+			// var gotError = JSON.stringify(jqXHR.responseJSON.errors);
+			// var email_url = `https://xyzstorage.com/wp-json/myplugin/v1/hubspotemail2?errorMessage=${gotError}`;
+			// // send error email
+			// $.ajax({
+			// 	url: email_url,
+			// 	success: function (result) {
+			// 		document.cookie = "snp_snppopup-exit=1";
+
+			// 	}
+			// });
+			// console.log(textStatus, errorThrown);
+		}
+	});
+	return true;
+}
 	var sticky = new Waypoint.Sticky({
 		element: $('.header')[0],
 		offset: -210

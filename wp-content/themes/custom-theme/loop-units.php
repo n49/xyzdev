@@ -302,7 +302,7 @@ return $daily;
 									</div>
 								</div>
 
-								<div class="tabs white toggle active">
+								<div style="cursor:pointer" class="tabs white toggle active">
 									<ul class="horizontal max-210">
 										<li class="monthlyMode">
 											<a class="monthlySwitch normal">
@@ -375,8 +375,10 @@ return $daily;
 									<div class="col desc">
 										<h3 class="title title-4">
 											<span><?php echo $category; ?></span>
-											<?php echo $unitSize ;?>
-											<?php if($unit['UnavailableMode'])  echo '**'; ?>
+ 											<?php echo $unitSize ;?>
+											<?php //echo $unitID; ?>
+											<?php //var_dump($unit['OnlineMessage']) ?>
+ 											<?php //if($unit['UnavailableMode'])  var_dump($unit['OnlineMessage']); ?>
 										</h3>
 
 										<button type="button" class="icon btn-hide">

@@ -6468,6 +6468,7 @@ span.wpcf7-not-valid-tip {
 	}
 
 	.tabs.white.toggle {
+		cursor: pointer;
 		padding: 40px 0 0;
 	}
 
@@ -7512,6 +7513,7 @@ a img.aligncenter {
 
 @media only screen and (max-width: 800px){
 	.tabs.white.toggle {
+		cursor:pointer;
 		padding: 0;
 	}
 
