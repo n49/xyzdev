@@ -97,7 +97,7 @@
 						<?php the_field('service_locations_content'); ?>
 					<?php endif; ?>
 
-					<div class="columns columns-3 locations flex white products img-inside has-view margin">
+					<div class="columns columns-3 locations flex flex-normal-2 white products img-inside has-button margin">
 						<?php foreach($posts as $post): // variable must be called $post (IMPORTANT) ?>
 							<?php setup_postdata($post); ?>
 
@@ -138,9 +138,23 @@
 											<?php the_field('location_custom_address'); ?>
 										</p>
 									<?php endif; ?>
+								</div>
 
-									<a class="view view-available"  style="cursor: pointer"title="<?php the_title(); ?>" onclick='setLocationTag("<?php the_title();?>","<?php the_permalink(); ?>")'>
-										<?php _e('view available units', 'html5blank'); ?>
+								<div class="bottom">
+									<div class="btn-wrap">
+										<?php if(get_field('location_custom_reserve_link')): ?>
+											<?php $url = get_field('location_custom_reserve_link'); ?>
+										<?php else: ?>
+											<?php $url = get_permalink() . 'book-a-unit'; ?>
+										<?php endif; ?>
+
+										<a class="btn" href="<?php echo $url; ?>" title="<?php the_title(); ?>">
+											<?php _e('reserve a unit', 'html5blank'); ?>
+										</a>
+									</div>
+
+									<a class="view-location-details" style="cursor : pointer" title="<?php the_title(); ?>" onclick='setLocationTag("<?php the_title(); ?>","<?php the_permalink(); ?>")'>
+										<?php _e('view location details', 'html5blank'); ?>
 									</a>
 								</div>
 							</article>

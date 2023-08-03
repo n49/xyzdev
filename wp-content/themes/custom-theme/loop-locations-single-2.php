@@ -29,7 +29,7 @@ function setLocationTag(loc,url)
 			<?php _e('find storage units near me', 'html5blank'); ?>
 		</h2>
 <?php //get_template_part('module-search'); ?>
-		<div class="columns columns-4 locations flex white products img-inside has-view mixitup">
+		<div class="columns columns-4 locations flex flex-normal-2 white products img-inside has-button mixitup">
 			<?php if ($loop->have_posts()): while ($loop->have_posts()) : $loop->the_post(); ?>
 				<?php if(get_field('location_address')): ?>
 					<?php
@@ -94,15 +94,24 @@ function setLocationTag(loc,url)
 								<?php _e('km away', 'html5blank'); ?>
 							</p>
 						<?php endif; ?>
-						<?php if($amp): ?>
-	            <a class="view view-available"  style="cursor: pointer" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>book-a-unit">
-	              <?php _e('view available units', 'html5blank'); ?>
-	            </a>
-	            <?php else: ?>
-							<a class="view" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-									<?php _e('view available units', 'html5blank'); ?>
-							</a>
+					</div>
+
+					<div class="bottom">
+						<div class="btn-wrap">
+							<?php if(get_field('location_custom_reserve_link')): ?>
+								<?php $url = get_field('location_custom_reserve_link'); ?>
+							<?php else: ?>
+								<?php $url = get_permalink() . 'book-a-unit'; ?>
 							<?php endif; ?>
+
+							<a class="btn" href="<?php echo $url; ?>" title="<?php the_title(); ?>">
+								<?php _e('reserve a unit', 'html5blank'); ?>
+							</a>
+						</div>
+
+						<a class="view-location-details" style="cursor : pointer" title="<?php the_title(); ?>" onclick='setLocationTag("<?php the_title(); ?>","<?php the_permalink(); ?>")'>
+							<?php _e('view location details', 'html5blank'); ?>
+						</a>
 					</div>
 				</article>
 			<?php endwhile; ?>

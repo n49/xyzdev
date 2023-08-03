@@ -289,6 +289,23 @@ function html5blank_conditional_scripts()
         wp_enqueue_script('locations');
     }
 
+	if(is_page_template('template-sections.php')){
+		wp_register_script('mixitup', get_template_directory_uri() . '/js/mixitup.min.js', array('jquery'), '3.3.1', true);
+        wp_enqueue_script('mixitup');
+
+		wp_register_script('mixitupmultifilter', get_template_directory_uri() . '/js/mixitup-multifilter.min.js', array('jquery'), '3.3.1', true);
+        wp_enqueue_script('mixitupmultifilter');
+
+		wp_register_script('mixitupinit', get_template_directory_uri() . '/js/mixitupinit.js', array('jquery'), '3.3.3', true);
+        wp_enqueue_script('mixitupinit');
+
+		wp_register_script('flickity', get_template_directory_uri() . '/js/flickity.pkgd.min.js', array('jquery'), '2.2.1', true);
+        wp_enqueue_script('flickity');
+
+        wp_register_style('flickitycss', get_template_directory_uri() . '/css/flickity.css', array(), '2.2.1', 'all');
+        wp_enqueue_style('flickitycss');
+	}
+
 	if(is_page_template('template-locations-book.php') && FALSE){
 		wp_register_script('google_optimize', get_template_directory_uri() . '/js/google_optimize.js', array('jquery'), '1.0.0', true);
 		wp_enqueue_script('google_optimize');
@@ -372,7 +389,7 @@ function html5blank_styles()
 	wp_register_style('flatpickrcss', get_template_directory_uri() . '/css/flatpickr.css', array(), '4.6.6', 'all');
     wp_enqueue_style('flatpickrcss');
 
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0.17', 'all');
+    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0.20', 'all');
     wp_enqueue_style('html5blank');
 }
 

@@ -19,7 +19,7 @@
 
 		<?php get_template_part('module-search'); ?>
 
-		<div class="columns columns-4 locations flex grey products has-view mixitup">
+		<div class="columns columns-4 locations flex flex-normal-2 grey products img-inside has-button mixitup">
 			<?php if ($loop->have_posts()): while ($loop->have_posts()) : $loop->the_post(); ?>
 				<?php if(get_field('location_address')): ?>
 					<?php
@@ -31,6 +31,19 @@
 				<?php endif; ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class('col mix'); ?> data-location-lat="<?php echo $address_lat; ?>" data-location-lng="<?php echo $address_lng; ?>" data-distance="100000">
+					<?php if( get_field('location_image') ): ?>
+						<?php $image = get_field('location_image'); ?>
+
+						<a class="img-wrap" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+							<?php if($amp): ?>
+								<amp-img width="300" height="137"
+								src="<?php echo $image['sizes']['small-5']; ?>" alt="<?php echo $image['alt']; ?>" layout="intrinsic"/>
+							<?php else: ?>
+								<img width="272px" height="81px" src="<?php echo $image['sizes']['small-5']; ?>" alt="<?php echo $image['alt']; ?>" />
+							<?php endif; ?>
+						</a>
+					<?php endif; ?>
+
 					<div class="content">
 						<?php if(get_field('location_new') === 'yes'): ?>
 							<span class="new">
@@ -71,15 +84,24 @@
 								<?php _e('km away', 'html5blank'); ?>
 							</p>
 						<?php endif; ?>
-						<?php if($amp): ?>
-	            <a class="view view-available"  style="cursor: pointer" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>book-a-unit">
-	              <?php _e('view available units', 'html5blank'); ?>
-	            </a>
-	            <?php else: ?>
-							<a class="view" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-									<?php _e('view available units', 'html5blank'); ?>
-							</a>
+					</div>
+
+					<div class="bottom">
+						<div class="btn-wrap">
+							<?php if(get_field('location_custom_reserve_link')): ?>
+								<?php $url = get_field('location_custom_reserve_link'); ?>
+							<?php else: ?>
+								<?php $url = get_permalink() . 'book-a-unit'; ?>
 							<?php endif; ?>
+
+							<a class="btn" href="<?php echo $url; ?>" title="<?php the_title(); ?>">
+								<?php _e('reserve a unit', 'html5blank'); ?>
+							</a>
+						</div>
+
+						<a class="view-location-details" style="cursor : pointer" title="<?php the_title(); ?>" onclick='setLocationTag("<?php the_title(); ?>","<?php the_permalink(); ?>")'>
+							<?php _e('view location details', 'html5blank'); ?>
+						</a>
 					</div>
 				</article>
 			<?php endwhile; ?>

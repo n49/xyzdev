@@ -10,9 +10,22 @@
 ?>
 
 <div class="locations-wrap">
-	<div class="columns columns-4 locations flex flex-normal-2 white products has-button">
+	<div class="columns columns-4 locations flex flex-normal-2 white products img-inside has-button">
 		<?php if ($loop->have_posts()): while ($loop->have_posts()) : $loop->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class('col'); ?>>
+				<?php if( get_field('location_image') ): ?>
+					<?php $image = get_field('location_image'); ?>
+
+					<a class="img-wrap" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+						<?php if($amp): ?>
+							<amp-img width="300" height="137"
+							src="<?php echo $image['sizes']['small-5']; ?>" alt="<?php echo $image['alt']; ?>" layout="intrinsic"/>
+						<?php else: ?>
+							<img width="272px" height="81px" src="<?php echo $image['sizes']['small-5']; ?>" alt="<?php echo $image['alt']; ?>" />
+						<?php endif; ?>
+					</a>
+				<?php endif; ?>
+
 				<div class="content">
 					<?php if(get_field('location_new') === 'yes'): ?>
 						<span class="new">
@@ -50,12 +63,18 @@
 
 				<div class="bottom">
 					<div class="btn-wrap">
-						<a class="btn" href="<?php the_permalink(); ?>book-a-unit" title="<?php the_title(); ?>">
+						<?php if(get_field('location_custom_reserve_link')): ?>
+							<?php $url = get_field('location_custom_reserve_link'); ?>
+						<?php else: ?>
+							<?php $url = get_permalink() . 'book-a-unit'; ?>
+						<?php endif; ?>
+
+						<a class="btn" href="<?php echo $url; ?>" title="<?php the_title(); ?>">
 							<?php _e('reserve a unit', 'html5blank'); ?>
 						</a>
 					</div>
 
-					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+					<a class="view-location-details" style="cursor : pointer" title="<?php the_title(); ?>" onclick='setLocationTag("<?php the_title(); ?>","<?php the_permalink(); ?>")'>
 						<?php _e('view location details', 'html5blank'); ?>
 					</a>
 				</div>

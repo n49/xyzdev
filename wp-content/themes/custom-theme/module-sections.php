@@ -27,6 +27,8 @@
 			<?php get_template_part('sections/section-team'); ?>
 		<?php elseif( get_row_layout() == 'cta'): ?>
 			<?php get_template_part('sections/section-cta'); ?>
+		<?php elseif( get_row_layout() == 'storage'): ?>
+			<?php get_template_part('sections/section-storage'); ?>
 		<?php endif; ?>
 	<?php endwhile; ?>
 <?php endif; ?>

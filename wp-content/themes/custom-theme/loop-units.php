@@ -336,7 +336,9 @@
 												$details_array[0] = substr($details_array[0],1);
 											}
 											$real_description = '';
+
 											$desc = strtolower(explode(' ',$unitDescription)[1]);
+// 											var_dump('hmm',$desc);
 											if(strcmp($desc, 'sfs') == 0)
 											{
 												$real_description = 'Second Floor, Stairs Access';
