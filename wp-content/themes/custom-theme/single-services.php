@@ -8,6 +8,15 @@
 	</div>
 </div>
 
+<script type='text/javascript'>
+	var locationName;
+	function setLocationTag(loc,url)
+	{
+		locationName = loc;
+		window.location = url
+	}
+</script>
+
 <div class="main-container overflow">
 	<div class="wrapper">
 		<main role="main" class="padding">
