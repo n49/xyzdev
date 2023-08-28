@@ -19,7 +19,7 @@ function setLocationTag(loc,url)
 }
 
 </script>
-<div class="locations-wrap spacing">
+<div class="locations-wrap spacing add-bgr">
 	<div class="wrapper">
 		<p class="title-5 icon icon-arrow">
 			<?php _e('locations', 'html5blank'); ?>
